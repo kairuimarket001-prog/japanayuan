@@ -22,7 +22,7 @@ export default function ModernPromptBox({ stockName, stockCode }: ModernPromptBo
             <span className="text-white font-semibold"> 指標</span>、
             <span className="text-white font-semibold">データ</span>、
             <span className="text-white font-semibold">トレンド</span>
-            を分析し、数秒で完全な結果をご提供します
+            を分析し、短時間で結果をご提供します
           </p>
         )}
       </div>

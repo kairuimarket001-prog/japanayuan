@@ -88,7 +88,7 @@ export async function generateDiagnosisReport(data: ReportData): Promise<void> {
           }),
 
           new Paragraph({
-            text: '詳細な分析を毎日受け取る',
+            text: '詳細な分析を定期的に受け取る',
             heading: HeadingLevel.HEADING_2,
             spacing: { before: 400, after: 200 }
           }),
@@ -96,7 +96,7 @@ export async function generateDiagnosisReport(data: ReportData): Promise<void> {
           new Paragraph({
             children: [
               new TextRun({
-                text: 'LINEで登録すると、毎日最新の株式分析レポートをお届けします。',
+                text: 'LINEで登録すると、定期的に最新の株式分析レポートをお届けします（配信頻度はサービス状況によります）。',
                 size: 22
               })
             ],

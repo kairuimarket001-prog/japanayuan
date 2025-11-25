@@ -119,7 +119,7 @@ export default function DiagnosisModal({
               className="w-full bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white font-bold py-4 px-6 rounded-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3 text-sm mt-6"
             >
               <ExternalLink className="w-6 h-6 flex-shrink-0" />
-              <span>LINEで毎日AIレポートを受け取る</span>
+              <span>LINEで定期AIレポートを受け取る</span>
             </button>
 
             <div className="mt-3 p-4 rounded-lg border" style={{ backgroundColor: '#fff7ed', borderColor: '#fb923c' }}>
@@ -140,11 +140,11 @@ export default function DiagnosisModal({
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-green-600 font-bold mt-0.5">✓</span>
-                  <span><strong className="text-green-700">完全無料</strong>：LINEへの移動後も追加料金は一切かかりません。</span>
+                  <span><strong className="text-green-700">現在無料</strong>：LINEへの移動後も現在追加料金はかかりません。</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-green-600 font-bold mt-0.5">✓</span>
-                  <span>LINE友だち追加で毎日最新のAI分析レポートが受け取れます。</span>
+                  <span>LINE友だち追加で定期的に最新のAI分析レポートが受け取れます（配信頻度はサービス状況によります）。</span>
                 </li>
               </ul>
             </div>

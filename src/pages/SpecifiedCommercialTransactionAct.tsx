@@ -120,13 +120,13 @@ export default function SpecifiedCommercialTransactionAct() {
                       </p>
                     </div>
                     <div className="text-right flex-shrink-0">
-                      <p className="text-2xl font-bold text-green-600">無料</p>
+                      <p className="text-2xl font-bold text-green-600">現在無料</p>
                     </div>
                   </div>
                   <div className="bg-white rounded p-3">
                     <p className="text-sm text-gray-700 leading-relaxed">
                       現在、当サービスは基本機能を無料で提供しております。
-                      今後、プレミアム機能を追加する場合は、事前にお知らせいたします。
+                      今後、プレミアム機能を追加する場合、または価格体系が変更される場合は、事前にお知らせいたします。
                     </p>
                   </div>
                 </div>
@@ -161,8 +161,8 @@ export default function SpecifiedCommercialTransactionAct() {
               <h2 className="text-xl font-bold text-gray-900 mb-4">サービス提供時期</h2>
               <div className="bg-slate-50 rounded-lg p-5">
                 <p className="text-gray-700 leading-relaxed">
-                  サービスはお申し込み後、即時ご利用いただけます。
-                  AI診断結果の生成には、通常数秒から数十秒程度のお時間をいただきます。
+                  サービスはお申し込み後、すぐにご利用いただけます。
+                  AI診断結果の生成には、通常数秒から数十秒程度のお時間をいただきます（サーバー状況により変動する場合があります）。
                 </p>
               </div>
             </section>

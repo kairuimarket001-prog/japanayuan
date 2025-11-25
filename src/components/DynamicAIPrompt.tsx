@@ -24,11 +24,11 @@ export default function DynamicAIPrompt({ stockName, stockCode, onStockNameClick
                 {stockName}
               </span>
             </span>{' '}
-            の指標とデータ及びトレンド、AIが準備完了でサービスを提供し、数秒で完全な結果が得られます
+            の指標、データ、トレンドをAIが分析し、短時間で結果を提供します
           </p>
         ) : (
           <p className="text-sm md:text-lg text-gray-800 text-center leading-relaxed">
-            株式コードを入力すると、AIが株式の指標、データ、トレンドを分析し、数秒で完全な結果が得られます
+            株式コードを入力すると、AIが株式の指標、データ、トレンドを分析し、短時間で結果を提供します
           </p>
         )}
       </div>
