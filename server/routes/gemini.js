@@ -72,20 +72,21 @@ PBR: ${stockData.pbr}倍
 業種: ${stockData.industry}
 時価総額: ${stockData.marketCap}億円
 
-必ず以下のフォーマットで出力してください：
+以下のフォーマットで正確に出力し、「メッセージを送信した瞬間にAI診断が始まり、最新レポートが即座に届きます。」という文で終了してください。この文の後に追加のテキストは一切出力しないでください。
+
+=== 出力開始 ===
 
 ご入力いただいた ${stockData.name} について、モメンタム分析・リアルタイムデータ・AIロジックをもとに診断を行いました。
 
 現在の株価は ${stockData.price} 円、前日比 ${stockData.change} 円（${stockData.changePercent}）
 
-【注目話題】株式データに基づいて、この銘柄の近期最も注目されるべき点を15-20字の簡潔で魅力的な日本語フレーズで表現してください。以下の要素を考慮してください：
-- 業種トレンド: ${stockData.industry}セクターの市場動向
-- 株価変動: 前日比${stockData.changePercent}の変動から見る市場反応
-- バリュエーション: PER ${stockData.per}倍、PBR ${stockData.pbr}倍から見る投資妙味
-- 配当: 配当利回り${stockData.dividend}%から見る収益性
-- 時価総額: ${stockData.marketCap}億円の企業規模
-
-15-20字で、投資家の興味を引く、この銘柄の「今」最もホットな話題を創造してください。
+【注目話題】
+株式データに基づいて15-20字の簡潔で魅力的な日本語フレーズを作成してください：
+- 業種: ${stockData.industry}
+- 株価変動: ${stockData.changePercent}
+- PER/PBR: ${stockData.per}倍/${stockData.pbr}倍
+- 配当: ${stockData.dividend}%
+- 時価総額: ${stockData.marketCap}億円
 
 私たちのスタッフ、「AI 株式 アシスタント」のLINEアカウントを追加してください。
 
@@ -93,10 +94,7 @@ PBR: ${stockData.pbr}倍
 
 メッセージを送信した瞬間にAI診断が始まり、最新レポートが即座に届きます。
 
-【厳格な終了ルール】
-1. 上記の「メッセージを送信した瞬間にAI診断が始まり、最新レポートが即座に届きます。」という文章で必ず終了してください。
-2. この文章の後に、いかなる追加のテキスト、説明、注釈も出力しないでください。
-3. 【注目話題】セクションには15-20字の魅力的なフレーズを含めてください。`;
+=== ここで必ず終了 ===`;
     } else {
       prompt = `あなたは日本の株式市場アナリストです。ユーザーが入力したコード「${code}」について診断を行います。
 
@@ -138,14 +136,13 @@ PBR: ${stockData.pbr}倍
                 content: prompt,
               },
             ],
-            temperature: 0.6,
-            max_tokens: 2000,
-            top_p: 0.7,
-            top_k: 50,
-            frequency_penalty: 0.2,
-            n: 1,
+            temperature: 0.5,
+            max_tokens: 2500,
+            top_p: 0.8,
+            top_k: 40,
+            frequency_penalty: 0.0,
+            presence_penalty: 0.0,
             stream: true,
-            stop: ["\n\n【", "\n\n重要", "\n\n---"],
           }),
           signal: controller.signal,
         }
