@@ -446,7 +446,7 @@ export default function RefactoredHome() {
       <ModernGradientBackground />
 
       <div className="relative z-10 flex-1 flex flex-col">
-        <div className="fixed top-0 left-0 right-0 z-50 overflow-hidden bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-500 py-3 shadow-xl">
+        <div className="fixed top-0 left-0 right-0 z-50 overflow-hidden py-3 shadow-xl" style={{background: 'linear-gradient(to right, #ffff1e, #ffff1e, #ffea00)'}}>
           <div className="animate-scroll-left whitespace-nowrap inline-block">
             {[...diagnosisRecords, ...diagnosisRecords, ...diagnosisRecords].map((record, index) => (
               <span key={index} className="inline-flex items-center mx-4 text-gray-900">

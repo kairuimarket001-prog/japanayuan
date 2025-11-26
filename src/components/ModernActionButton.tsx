@@ -12,7 +12,7 @@ export default function ModernActionButton({ onClick, disabled = false }: Modern
           disabled={disabled}
           className="w-full text-gray-900 font-bold py-4 px-6 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
           style={{
-            backgroundColor: disabled ? '#D1D5DB' : '#fbbf24',
+            backgroundColor: disabled ? '#D1D5DB' : '#ffff1e',
             height: '56px'
           }}
         >

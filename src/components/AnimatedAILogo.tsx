@@ -13,9 +13,9 @@ export default function AnimatedAILogo() {
       <div className="relative w-96 h-96">
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="relative animate-breathe">
-            <div className="absolute inset-0 rounded-full bg-yellow-300 w-20 h-20 blur-3xl opacity-90 animate-pulse shadow-[0_0_60px_rgba(252,211,77,0.8)]"></div>
+            <div className="absolute inset-0 rounded-full w-20 h-20 blur-3xl opacity-90 animate-pulse shadow-[0_0_60px_rgba(255,255,30,0.8)]" style={{backgroundColor: '#ffff1e'}}></div>
 
-            <div className="relative z-10 w-20 h-20 bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-500 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(252,211,77,0.6),0_0_60px_rgba(252,211,77,0.4)] overflow-hidden">
+            <div className="relative z-10 w-20 h-20 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(255,255,30,0.6),0_0_60px_rgba(255,255,30,0.4)] overflow-hidden" style={{background: 'linear-gradient(to bottom right, #ffff1e, #ffff1e, #ffea00)'}}>
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/40 to-transparent animate-shine"></div>
               <span className="text-3xl font-bold text-gray-900 drop-shadow-lg relative z-10">AI</span>
             </div>
