@@ -1,11 +1,11 @@
 export default function AstronautAnimation() {
   return (
-    <div className="w-32 h-32 sm:w-40 sm:h-40 animate-astronaut-float">
+    <div >
       <svg
         viewBox="0 0 200 200"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full drop-shadow-2xl"
+        
       >
         <defs>
           <linearGradient id="astronautGradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -27,7 +27,7 @@ export default function AstronautAnimation() {
           <animate attributeName="opacity" values="0.2;0.15;0.2" dur="3s" repeatCount="indefinite" />
         </ellipse>
 
-        <g className="astronaut-body">
+        <g >
           <rect x="70" y="90" width="60" height="70" rx="10" fill="url(#astronautGradient)" stroke="#0ea5e9" strokeWidth="2" />
 
           <rect x="55" y="100" width="20" height="50" rx="10" fill="url(#astronautGradient)" stroke="#0ea5e9" strokeWidth="2" />
@@ -66,7 +66,7 @@ export default function AstronautAnimation() {
           <circle cx="115" cy="125" r="4" fill="#14b8a6" opacity="0.6" />
         </g>
 
-        <g className="stars" opacity="0.6">
+        <g  opacity="0.6">
           <circle cx="30" cy="30" r="2" fill="#fcd34d">
             <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" />
           </circle>

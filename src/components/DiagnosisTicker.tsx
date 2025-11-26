@@ -13,16 +13,16 @@ const diagnosisRecords = [
 
 export default function DiagnosisTicker() {
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 overflow-hidden bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 py-2 shadow-lg border-b border-slate-700/50">
-      <div className="animate-scroll-left whitespace-nowrap inline-block">
+    <div className="bg-gradient-to-r">
+      <div >
         {[...diagnosisRecords, ...diagnosisRecords, ...diagnosisRecords].map((record, index) => (
-          <span key={index} className="inline-flex items-center mx-4 text-slate-100">
-            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-blue-500/20 mr-2 text-sm">
+          <span key={index} >
+            <span className="bg-blue-500/20">
               {record.icon}
             </span>
-            <span className="text-sm font-medium mr-2 text-blue-300">{record.time}</span>
-            <span className="text-sm font-bold mr-2 text-white">{record.stock}</span>
-            <span className="text-xs bg-blue-500/30 px-2 py-0.5 rounded-full text-blue-100 border border-blue-400/30">無料レポート取得</span>
+            <span >{record.time}</span>
+            <span >{record.stock}</span>
+            <span className="bg-blue-500/30">無料レポート取得</span>
           </span>
         ))}
       </div>

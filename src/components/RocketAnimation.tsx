@@ -1,11 +1,11 @@
 export default function RocketAnimation() {
   return (
-    <div className="w-32 h-32 sm:w-40 sm:h-40 animate-rocket-lift">
+    <div >
       <svg
         viewBox="0 0 200 200"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full drop-shadow-2xl"
+        
       >
         <defs>
           <linearGradient id="rocketBodyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -24,7 +24,7 @@ export default function RocketAnimation() {
           </linearGradient>
         </defs>
 
-        <g className="rocket-main">
+        <g >
           <path d="M 100 30 L 85 60 L 85 130 L 115 130 L 115 60 Z" fill="url(#rocketBodyGradient)" stroke="#bae6fd" strokeWidth="2" />
 
           <ellipse cx="100" cy="30" rx="15" ry="20" fill="#5eead4" stroke="#bae6fd" strokeWidth="2" />
@@ -43,7 +43,7 @@ export default function RocketAnimation() {
           <circle cx="105" cy="55" r="2" fill="white" opacity="0.6" />
         </g>
 
-        <g className="flames">
+        <g >
           <ellipse cx="93" cy="135" rx="8" ry="15" fill="url(#flameGradient)" opacity="0.9">
             <animate attributeName="ry" values="15;25;15" dur="0.3s" repeatCount="indefinite" />
             <animate attributeName="opacity" values="0.9;0.6;0.9" dur="0.3s" repeatCount="indefinite" />
@@ -69,7 +69,7 @@ export default function RocketAnimation() {
           </ellipse>
         </g>
 
-        <g className="smoke-particles" opacity="0.4">
+        <g  opacity="0.4">
           <circle cx="85" cy="160" r="4" fill="#94A3B8">
             <animate attributeName="cy" values="160;180;160" dur="2s" repeatCount="indefinite" />
             <animate attributeName="opacity" values="0.4;0;0.4" dur="2s" repeatCount="indefinite" />
@@ -84,7 +84,7 @@ export default function RocketAnimation() {
           </circle>
         </g>
 
-        <g className="sparkles">
+        <g >
           <circle cx="80" cy="120" r="2" fill="#fcd34d">
             <animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite" />
           </circle>

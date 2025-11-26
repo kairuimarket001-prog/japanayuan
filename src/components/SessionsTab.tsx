@@ -101,39 +101,39 @@ export default function SessionsTab() {
 
   if (loading) {
     return (
-      <div className="text-center py-20">
-        <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-slate-300 border-t-slate-900"></div>
-        <p className="mt-4 text-slate-600">加载会话数据...</p>
+      <div >
+        <div ></div>
+        <p >加载会话数据...</p>
       </div>
     );
   }
 
   return (
-    <div className="space-y-6">
+    <div >
       {/* Filters */}
-      <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-4">
-        <div className="flex flex-col md:flex-row gap-4">
+      <div className="bg-white">
+        <div >
           {/* Search */}
-          <div className="flex-1">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+          <div >
+            <div >
+              <Search  />
               <input
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="搜索股票代码、股票名称或gclid..."
-                className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-900 focus:border-transparent outline-none"
+                
               />
             </div>
           </div>
 
           {/* Conversion Filter */}
-          <div className="flex items-center gap-2">
-            <Filter className="w-5 h-5 text-slate-600" />
+          <div >
+            <Filter  />
             <select
               value={filterConverted}
               onChange={(e) => setFilterConverted(e.target.value as any)}
-              className="px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-900 focus:border-transparent outline-none"
+              
             >
               <option value="all">全部会话</option>
               <option value="converted">已转化</option>
@@ -144,16 +144,16 @@ export default function SessionsTab() {
       </div>
 
       {/* Sessions List */}
-      <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <h3 className="text-lg font-bold text-slate-900">
+      <div >
+        <div >
+          <h3 >
             用户会话 ({filteredSessions.length})
           </h3>
         </div>
 
         {filteredSessions.length === 0 ? (
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-12 text-center">
-            <p className="text-slate-600">没有找到匹配的会话</p>
+          <div className="bg-white">
+            <p >没有找到匹配的会话</p>
           </div>
         ) : (
           filteredSessions.map((session) => (
@@ -191,43 +191,43 @@ function SessionCard({ session, events, isExpanded, onToggle }: SessionCardProps
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+    <div className="bg-white">
       {/* Session Header */}
       <div
         onClick={onToggle}
-        className="p-4 cursor-pointer hover:bg-slate-50 transition"
+        className="bg-slate-50"
       >
-        <div className="flex items-center justify-between">
-          <div className="flex-1">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-100 border border-blue-300 rounded-lg">
-                <span className="font-bold text-blue-900 text-base">
+        <div >
+          <div >
+            <div >
+              <div className="bg-blue-100">
+                <span >
                   {session.stock_code || 'N/A'}
                 </span>
-                <span className="font-semibold text-blue-700">
+                <span >
                   {session.stock_name || 'Unknown'}
                 </span>
               </div>
               {session.converted && (
-                <span className="inline-flex items-center gap-1 px-2 py-1 bg-green-100 text-green-700 text-xs font-medium rounded">
-                  <CheckCircle className="w-3 h-3" />
+                <span className="bg-green-100">
+                  <CheckCircle  />
                   已转化
                 </span>
               )}
             </div>
-            <div className="flex items-center gap-4 text-sm text-slate-600">
-              <div className="flex items-center gap-1">
-                <Clock className="w-4 h-4" />
+            <div >
+              <div >
+                <Clock  />
                 <span>{formatTime(session.first_visit_at)}</span>
               </div>
-              <div className="flex items-center gap-1">
-                <Globe className="w-4 h-4" />
+              <div >
+                <Globe  />
                 <span>来源: {session.url_params?.src || '直接访问'}</span>
               </div>
               {session.url_params?.gclid && (
-                <div className="flex items-center gap-1">
-                  <ExternalLink className="w-4 h-4" />
-                  <span className="font-mono text-xs">
+                <div >
+                  <ExternalLink  />
+                  <span >
                     {session.url_params.gclid.substring(0, 12)}...
                   </span>
                 </div>
@@ -236,9 +236,9 @@ function SessionCard({ session, events, isExpanded, onToggle }: SessionCardProps
           </div>
           <div>
             {isExpanded ? (
-              <ChevronUp className="w-5 h-5 text-slate-400" />
+              <ChevronUp  />
             ) : (
-              <ChevronDown className="w-5 h-5 text-slate-400" />
+              <ChevronDown  />
             )}
           </div>
         </div>
@@ -246,14 +246,14 @@ function SessionCard({ session, events, isExpanded, onToggle }: SessionCardProps
 
       {/* Session Timeline */}
       {isExpanded && (
-        <div className="border-t border-slate-200 bg-slate-50 p-4">
-          <h4 className="font-semibold text-slate-900 mb-4">用户行为时间线</h4>
-          <div className="space-y-3">
+        <div className="bg-slate-50">
+          <h4 >用户行为时间线</h4>
+          <div >
             {events.map((event, index) => (
               <EventItem key={event.id} event={event} isLast={index === events.length - 1} />
             ))}
             {events.length === 0 && (
-              <p className="text-sm text-slate-600 text-center py-4">暂无事件记录</p>
+              <p >暂无事件记录</p>
             )}
           </div>
         </div>
@@ -271,13 +271,13 @@ function EventItem({ event, isLast }: EventItemProps) {
   const getEventIcon = (type: string) => {
     switch (type) {
       case 'page_load':
-        return <Globe className="w-5 h-5 text-blue-600" />;
+        return <Globe  />;
       case 'diagnosis_click':
-        return <MousePointerClick className="w-5 h-5 text-purple-600" />;
+        return <MousePointerClick  />;
       case 'conversion':
-        return <CheckCircle className="w-5 h-5 text-green-600" />;
+        return <CheckCircle  />;
       default:
-        return <Clock className="w-5 h-5 text-slate-600" />;
+        return <Clock  />;
     }
   };
 
@@ -316,42 +316,42 @@ function EventItem({ event, isLast }: EventItemProps) {
   };
 
   return (
-    <div className="flex gap-3">
-      <div className="flex flex-col items-center">
+    <div >
+      <div >
         <div className={`p-2 rounded-lg border-2 ${getEventBgColor(event.event_type)}`}>
           {getEventIcon(event.event_type)}
         </div>
-        {!isLast && <div className="flex-1 w-0.5 bg-slate-300 mt-2" style={{ minHeight: '24px' }} />}
+        {!isLast && <div className="bg-slate-300"  />}
       </div>
-      <div className="flex-1 pb-4">
-        <div className="flex items-center justify-between mb-1">
-          <h5 className="font-semibold text-slate-900">{getEventTitle(event.event_type)}</h5>
-          <span className="text-xs text-slate-500">{formatTime(event.created_at)}</span>
+      <div >
+        <div >
+          <h5 >{getEventTitle(event.event_type)}</h5>
+          <span >{formatTime(event.created_at)}</span>
         </div>
-        <div className="text-sm text-slate-600 space-y-1">
+        <div >
           {event.event_type === 'page_load' && (
             <>
-              <p>股票代码: <span className="font-semibold">{event.stock_code}</span></p>
-              <p>股票名称: <span className="font-semibold">{event.stock_name}</span></p>
+              <p>股票代码: <span >{event.stock_code}</span></p>
+              <p>股票名称: <span >{event.stock_name}</span></p>
               {event.event_data?.url && (
-                <p className="text-xs break-all">URL: {event.event_data.url}</p>
+                <p >URL: {event.event_data.url}</p>
               )}
             </>
           )}
           {event.event_type === 'diagnosis_click' && (
             <>
-              <p>股票名称: <span className="font-semibold">{event.stock_name}</span></p>
+              <p>股票名称: <span >{event.stock_name}</span></p>
               {event.duration_ms && (
-                <p>加载时长: <span className="font-semibold">{(event.duration_ms / 1000).toFixed(2)}秒</span></p>
+                <p>加载时长: <span >{(event.duration_ms / 1000).toFixed(2)}秒</span></p>
               )}
             </>
           )}
           {event.event_type === 'conversion' && (
             <>
               {event.gclid && (
-                <p>GCLID: <span className="font-mono text-xs">{event.gclid}</span></p>
+                <p>GCLID: <span >{event.gclid}</span></p>
               )}
-              <p>转换时间: <span className="font-semibold">{formatTime(event.created_at)}</span></p>
+              <p>转换时间: <span >{formatTime(event.created_at)}</span></p>
             </>
           )}
         </div>

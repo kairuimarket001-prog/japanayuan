@@ -442,36 +442,36 @@ export default function RefactoredHome() {
   };
 
   return (
-    <div className="min-h-screen relative flex flex-col">
+    <div >
       <ModernGradientBackground />
 
-      <div className="relative z-10 flex-1 flex flex-col">
+      <div >
         <ApiStatsDisplay />
 
         {!showLoadingScene ? (
-          <div className="flex-1 flex flex-col">
-            <div className="flex-[6] flex flex-col items-center justify-center px-4 py-8">
+          <div >
+            <div >
               <IllustrationCarousel />
             </div>
 
-            <div className="w-[95%] mx-auto mb-4">
-              <div className="overflow-hidden bg-gradient-to-r from-ocean-600 via-ocean-500 to-teal-600 py-3 shadow-xl rounded-xl border border-ocean-400/30">
-                <div className="animate-scroll-left whitespace-nowrap inline-block">
+            <div >
+              <div className="bg-gradient-to-r">
+                <div >
                   {[...diagnosisRecords, ...diagnosisRecords, ...diagnosisRecords].map((record, index) => (
-                    <span key={index} className="inline-flex items-center mx-4 text-white drop-shadow-sm">
-                      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white/30 mr-2 text-sm shadow-sm">
+                    <span key={index} >
+                      <span className="bg-white/30">
                         {record.icon}
                       </span>
-                      <span className="text-sm font-semibold mr-2 text-amber-300">{record.time}</span>
-                      <span className="text-sm font-bold mr-2 text-white">{record.stock}</span>
-                      <span className="text-xs bg-white/25 px-2.5 py-1 rounded-full font-medium shadow-sm backdrop-blur-sm">無料レポート取得</span>
+                      <span >{record.time}</span>
+                      <span >{record.stock}</span>
+                      <span className="bg-white/25">無料レポート取得</span>
                     </span>
                   ))}
                 </div>
               </div>
             </div>
 
-            <div className="flex-[4] flex flex-col justify-end">
+            <div >
               <FormContainer>
                 <ModernStockInput
                   value={inputValue}
@@ -480,15 +480,15 @@ export default function RefactoredHome() {
                 />
 
                 {loading && (
-                  <div className="text-center py-4 animate-fadeIn">
-                    <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-200 border-t-gray-900"></div>
-                    <p className="mt-2 text-gray-600 text-sm">Loading...</p>
+                  <div >
+                    <div ></div>
+                    <p >Loading...</p>
                   </div>
                 )}
 
                 {error && diagnosisState !== 'error' && (
-                  <div className="bg-red-50 border border-red-200 rounded-xl p-3 text-center animate-fadeIn mt-4">
-                    <p className="text-red-600 text-sm font-semibold">{error}</p>
+                  <div className="bg-red-50">
+                    <p >{error}</p>
                   </div>
                 )}
 
@@ -497,15 +497,15 @@ export default function RefactoredHome() {
                 )}
 
                 {diagnosisState === 'error' && (
-                  <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-center animate-fadeIn mt-4">
-                    <h3 className="text-lg font-bold text-red-600 mb-2">診断エラー</h3>
-                    <p className="text-red-600 text-sm mb-4 whitespace-pre-line">{error}</p>
+                  <div className="bg-red-50">
+                    <h3 >診断エラー</h3>
+                    <p >{error}</p>
                     <button
                       onClick={() => {
                         setDiagnosisState('initial');
                         setError(null);
                       }}
-                      className="px-6 py-3 bg-gray-900 text-white font-bold rounded-xl transition-all shadow-lg hover:opacity-90"
+                      className="bg-gray-900"
                     >
                       もう一度試す
                     </button>
@@ -515,7 +515,7 @@ export default function RefactoredHome() {
             </div>
           </div>
         ) : (
-          <div className="flex-1 flex items-center justify-center">
+          <div >
             <InlineLoadingScene isVisible={showLoadingScene} />
           </div>
         )}

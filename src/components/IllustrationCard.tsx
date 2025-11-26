@@ -1,16 +1,13 @@
 export default function IllustrationCard() {
   return (
-    <div className="relative w-full max-w-[280px] mx-auto px-4">
+    <div >
       <div
-        className="relative rounded-3xl overflow-hidden shadow-2xl"
-        style={{
-          transform: 'rotate(2deg)',
-          background: 'repeating-conic-gradient(#a8e6a1 0% 25%, #c8f5c3 0% 50%) 50% / 20px 20px'
-        }}
+        
+        style={{background: 'repeating-conic-gradient(#a8e6a1 0% 25%, #c8f5c3 0% 50%) 50% / 20px 20px'}}
       >
-        <div className="relative p-6 pb-14 min-h-[320px] flex flex-col">
-          <div className="absolute -top-8 -left-8 z-20">
-            <div className="relative">
+        <div >
+          <div >
+            <div >
               <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <radialGradient id="coinGradient" cx="50%" cy="50%">
@@ -34,8 +31,8 @@ export default function IllustrationCard() {
             </div>
           </div>
 
-          <div className="absolute top-6 right-6 z-10">
-            <div className="w-16 h-16 bg-white rounded-lg shadow-lg flex items-center justify-center">
+          <div >
+            <div className="bg-white">
               <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <linearGradient id="bar1" x1="0" y1="0" x2="0" y2="1">
@@ -64,27 +61,25 @@ export default function IllustrationCard() {
             </div>
           </div>
 
-          <div className="flex-1 flex flex-col items-start justify-center mt-6 mb-10">
-            <div className="text-left mb-4">
-              <h1 className="text-5xl font-bold text-gray-900">AI</h1>
+          <div >
+            <div >
+              <h1 >AI</h1>
             </div>
 
-            <div className="w-full -mx-6">
+            <div >
               <div
-                className="px-6 py-3"
-                style={{
-                  background: 'linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%)'
-                }}
+                
+                style={{background: 'linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%)'}}
               >
-                <h2 className="text-2xl font-bold text-white leading-tight">
+                <h2 >
                   株式インテリジェント分析監視ツール
                 </h2>
               </div>
             </div>
           </div>
 
-          <div className="absolute bottom-6 left-6 flex items-center space-x-[-12px] z-10">
-            <div className="w-12 h-12 rounded-full bg-white border-2 border-white shadow-md flex items-center justify-center overflow-hidden">
+          <div >
+            <div className="bg-white">
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="24" cy="18" r="7" fill="#FFA07A" />
                 <circle cx="24" cy="16" r="6" fill="#FFB6A3" />
@@ -97,7 +92,7 @@ export default function IllustrationCard() {
               </svg>
             </div>
 
-            <div className="w-12 h-12 rounded-full bg-white border-2 border-white shadow-md flex items-center justify-center overflow-hidden">
+            <div className="bg-white">
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="24" cy="18" r="7" fill="#D4A574" />
                 <circle cx="24" cy="16" r="6" fill="#E8C4A0" />
@@ -110,7 +105,7 @@ export default function IllustrationCard() {
               </svg>
             </div>
 
-            <div className="w-12 h-12 rounded-full bg-white border-2 border-white shadow-md flex items-center justify-center overflow-hidden">
+            <div className="bg-white">
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="24" cy="18" r="7" fill="#F5CBA7" />
                 <circle cx="24" cy="16" r="6" fill="#FADBD8" />
@@ -123,7 +118,7 @@ export default function IllustrationCard() {
               </svg>
             </div>
 
-            <div className="w-12 h-12 rounded-full bg-white border-2 border-white shadow-md flex items-center justify-center overflow-hidden">
+            <div className="bg-white">
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="24" cy="18" r="7" fill="#C9A587" />
                 <circle cx="24" cy="16" r="6" fill="#DEB887" />
@@ -139,8 +134,8 @@ export default function IllustrationCard() {
             </div>
           </div>
 
-          <div className="absolute bottom-6 right-6 z-10">
-            <div className="relative">
+          <div >
+            <div >
               <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <ellipse cx="28" cy="52" rx="20" ry="3" fill="#000000" opacity="0.15" />
                 <path

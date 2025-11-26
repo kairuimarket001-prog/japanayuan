@@ -17,8 +17,8 @@ const carouselItems = [
       </svg>
     ),
     topRightIcon: (
-      <div className="w-16 h-16 bg-amber-400 rounded-lg shadow-lg flex items-center justify-center">
-        <span className="text-2xl font-black text-gray-900">GO</span>
+      <div className="bg-amber-400">
+        <span >GO</span>
       </div>
     ),
     bottomLeftAvatars: true,
@@ -45,8 +45,8 @@ const carouselItems = [
       </svg>
     ),
     topRightIcon: (
-      <div className="w-16 h-16 bg-coral-300 rounded-lg shadow-lg flex items-center justify-center">
-        <span className="text-xs font-black text-gray-900">RATE</span>
+      <div className="bg-coral-300">
+        <span >RATE</span>
       </div>
     ),
     bottomLeftAvatars: false,
@@ -86,7 +86,7 @@ const carouselItems = [
       </svg>
     ),
     topRightIcon: (
-      <div className="w-16 h-16 bg-white rounded-lg shadow-lg flex items-center justify-center">
+      <div className="bg-white">
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="bar1" x1="0" y1="0" x2="0" y2="1">
@@ -151,47 +151,45 @@ export default function IllustrationCarousel() {
   const currentItem = carouselItems[currentIndex];
 
   return (
-    <div className="relative w-full max-w-[280px] mx-auto px-4">
+    <div >
       <div
-        className="relative rounded-3xl overflow-hidden shadow-2xl transition-all duration-500"
+        
         style={{
           transform: `rotate(${currentItem.rotation})`,
           background: currentItem.background,
         }}
       >
-        <div className="relative p-6 pb-14 min-h-[280px] flex flex-col">
-          <div className="absolute -top-8 -left-8 z-20">
-            <div className="relative">{currentItem.topLeftIcon}</div>
+        <div >
+          <div >
+            <div >{currentItem.topLeftIcon}</div>
           </div>
 
-          <div className="absolute top-6 right-6 z-10">{currentItem.topRightIcon}</div>
+          <div >{currentItem.topRightIcon}</div>
 
-          <div className="flex-1 flex flex-col items-start justify-center mt-6 mb-10">
-            <div className="text-left mb-4 w-full">
-              <h1 className="text-4xl font-bold text-gray-900 mb-2">{currentItem.titleLine1}</h1>
+          <div >
+            <div >
+              <h1 >{currentItem.titleLine1}</h1>
               {currentItem.titleLine2 && (
-                <div className="w-full -mx-6">
+                <div >
                   <div
-                    className="px-6 py-2"
-                    style={{
-                      background: 'linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%)',
-                    }}
+                    
+                    style={{background: 'linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%)'}}
                   >
-                    <h2 className="text-xl font-bold text-white leading-tight whitespace-nowrap">
+                    <h2 >
                       {currentItem.titleLine2}
                     </h2>
                   </div>
                 </div>
               )}
               {currentItem.titleLine3 && (
-                <h1 className="text-4xl font-bold text-gray-900 mt-2">{currentItem.titleLine3}</h1>
+                <h1 >{currentItem.titleLine3}</h1>
               )}
             </div>
           </div>
 
           {currentItem.bottomLeftAvatars && (
-            <div className="absolute bottom-6 left-6 flex items-center space-x-[-12px] z-10">
-              <div className="w-12 h-12 rounded-full bg-white border-2 border-white shadow-md flex items-center justify-center overflow-hidden">
+            <div >
+              <div className="bg-white">
                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="24" cy="18" r="7" fill="#FFA07A" />
                   <circle cx="24" cy="16" r="6" fill="#FFB6A3" />
@@ -204,7 +202,7 @@ export default function IllustrationCarousel() {
                 </svg>
               </div>
 
-              <div className="w-12 h-12 rounded-full bg-white border-2 border-white shadow-md flex items-center justify-center overflow-hidden">
+              <div className="bg-white">
                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="24" cy="18" r="7" fill="#D4A574" />
                   <circle cx="24" cy="16" r="6" fill="#E8C4A0" />
@@ -217,7 +215,7 @@ export default function IllustrationCarousel() {
                 </svg>
               </div>
 
-              <div className="w-12 h-12 rounded-full bg-white border-2 border-white shadow-md flex items-center justify-center overflow-hidden">
+              <div className="bg-white">
                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="24" cy="18" r="7" fill="#F5CBA7" />
                   <circle cx="24" cy="16" r="6" fill="#FADBD8" />
@@ -230,7 +228,7 @@ export default function IllustrationCarousel() {
                 </svg>
               </div>
 
-              <div className="w-12 h-12 rounded-full bg-white border-2 border-white shadow-md flex items-center justify-center overflow-hidden">
+              <div className="bg-white">
                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="24" cy="18" r="7" fill="#C9A587" />
                   <circle cx="24" cy="16" r="6" fill="#DEB887" />
@@ -247,27 +245,27 @@ export default function IllustrationCarousel() {
             </div>
           )}
 
-          <div className="absolute bottom-6 right-6 z-10">
-            <div className="relative">{currentItem.bottomRightIcon}</div>
+          <div >
+            <div >{currentItem.bottomRightIcon}</div>
           </div>
         </div>
       </div>
 
-      <div className="flex items-center justify-center gap-2 mt-6">
+      <div >
         {carouselItems.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className="transition-all duration-300"
+            
             aria-label={`Go to slide ${index + 1}`}
           >
             {index === currentIndex ? (
               <div
-                className="w-3 h-3 rounded-full"
-                style={{ background: 'linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%)' }}
+                
+                style={{background: 'linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%)'}}
               ></div>
             ) : (
-              <div className="w-2 h-2 rounded-full bg-ocean-300"></div>
+              <div className="bg-ocean-300"></div>
             )}
           </button>
         ))}

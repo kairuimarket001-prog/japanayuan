@@ -102,8 +102,8 @@ export default function ModernStockInput({ value, onChange, onStockSelect }: Mod
   };
 
   return (
-    <div className="relative w-full animate-fadeIn" style={{ animationDelay: '0.1s' }}>
-      <div className="relative">
+    <div  >
+      <div >
         <input
           ref={inputRef}
           type="text"
@@ -111,8 +111,8 @@ export default function ModernStockInput({ value, onChange, onStockSelect }: Mod
           onChange={(e) => onChange(e.target.value)}
           onFocus={handleInputFocus}
           placeholder="例: 7203 / トヨタ / ソニー"
-          className="w-full px-4 py-3 text-base text-gray-900 bg-[#F4F4F4] rounded-xl border-0 focus:ring-2 focus:ring-gray-300 focus:outline-none placeholder-gray-400 transition-all duration-200"
-          style={{ height: '52px' }}
+          className="bg-[#F4F4F4]"
+          
           disabled={isLoading}
         />
       </div>
@@ -120,28 +120,24 @@ export default function ModernStockInput({ value, onChange, onStockSelect }: Mod
       {showDropdown && currentResults.length > 0 && (
         <div
           ref={dropdownRef}
-          className="fixed z-[99999] bg-white rounded-2xl shadow-2xl overflow-hidden animate-fadeIn border border-gray-200"
-          style={{
-            left: dropdownPosition.left + 'px',
-            top: dropdownPosition.top + 'px',
-            width: dropdownPosition.width + 'px'
-          }}
+          className="bg-white"
+          
         >
-          <div className="max-h-80 overflow-y-auto">
+          <div >
             {currentResults.map((stock, index) => (
               <button
                 key={`${stock.code}-${index}`}
                 onClick={() => handleStockClick(stock)}
-                className="w-full px-5 py-2.5 text-left hover:bg-gray-50 transition-all duration-150 border-b border-gray-100 last:border-b-0"
+                className="bg-gray-50"
               >
-                <div className="flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-3 flex-1 min-w-0">
-                    <div className="font-semibold text-gray-900 whitespace-nowrap">{stock.code}</div>
-                    <div className="text-sm text-gray-600 truncate" title={stock.name}>
+                <div >
+                  <div >
+                    <div >{stock.code}</div>
+                    <div  title={stock.name}>
                       {stock.name.length > 6 ? `${stock.name.slice(0, 6)}...` : stock.name}
                     </div>
                   </div>
-                  <div className="text-xs text-gray-600 bg-gray-100 px-3 py-1 rounded-full font-medium whitespace-nowrap">
+                  <div className="bg-gray-100">
                     {stock.market}
                   </div>
                 </div>
@@ -150,27 +146,27 @@ export default function ModernStockInput({ value, onChange, onStockSelect }: Mod
           </div>
 
           {totalPages > 1 && (
-            <div className="flex items-center justify-between px-5 py-3 bg-gray-50 border-t border-gray-200">
+            <div className="bg-gray-50">
               <button
                 onClick={handlePrevPage}
                 disabled={currentPage === 0}
-                className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-full hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                className="bg-white bg-gray-100"
               >
-                <ChevronLeft className="w-4 h-4" />
+                <ChevronLeft  />
                 前へ
               </button>
 
-              <div className="text-sm font-semibold text-gray-700">
+              <div >
                 {currentPage + 1} / {totalPages}
               </div>
 
               <button
                 onClick={handleNextPage}
                 disabled={currentPage === totalPages - 1}
-                className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-full hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                className="bg-white bg-gray-100"
               >
                 次へ
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight  />
               </button>
             </div>
           )}
@@ -178,7 +174,7 @@ export default function ModernStockInput({ value, onChange, onStockSelect }: Mod
       )}
 
       {isLoading && (
-        <div className="absolute left-0 right-0 top-full mt-2 text-center text-sm text-gray-300">
+        <div >
           読み込み中...
         </div>
       )}

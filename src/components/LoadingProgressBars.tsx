@@ -73,16 +73,16 @@ export default function LoadingProgressBars({ isVisible }: LoadingProgressBarsPr
   ];
 
   return (
-    <div className="w-full space-y-4">
+    <div >
       {stages.map((stage, index) => (
-        <div key={index} className="space-y-1">
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-semibold text-white">{stage.label}</span>
-            <span className="text-xs text-gray-300">{Math.floor(stage.progress)}%</span>
+        <div key={index} >
+          <div >
+            <span >{stage.label}</span>
+            <span >{Math.floor(stage.progress)}%</span>
           </div>
-          <div className="relative w-full h-2 bg-gray-800/50 rounded-full overflow-hidden border border-purple-500/30">
+          <div className="bg-gray-800/50">
             <div
-              className="absolute top-0 left-0 h-full transition-all duration-300 ease-out rounded-full"
+              
               style={{
                 width: `${stage.progress}%`,
                 backgroundColor: stage.color,
