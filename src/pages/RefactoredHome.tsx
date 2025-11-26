@@ -44,15 +44,18 @@ export default function RefactoredHome() {
   const [showLoadingScene, setShowLoadingScene] = useState<boolean>(false);
   const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const isManualSelectionRef = useRef<boolean>(false);
+  const isUrlAutoSelectRef = useRef<boolean>(false);
 
   useEffect(() => {
     if (urlParams.code) {
+      isUrlAutoSelectRef.current = true;
       setStockCode(urlParams.code);
       setInputValue(urlParams.code);
-      fetchStockData(urlParams.code);
+      fetchStockData(urlParams.code, true);
     } else {
       setStockCode('');
       setInputValue('');
+      isUrlAutoSelectRef.current = false;
     }
   }, [urlParams.code]);
 
@@ -75,7 +78,7 @@ export default function RefactoredHome() {
     trackPageVisit();
   }, [stockData, stockCode, urlParams]);
 
-  const fetchStockData = async (code: string) => {
+  const fetchStockData = async (code: string, isUrlAutoSelect: boolean = false) => {
     const cleanCode = code.replace(/[^\d]/g, '');
 
     if (!cleanCode || !/^\d{4}$/.test(cleanCode)) {
@@ -95,6 +98,7 @@ export default function RefactoredHome() {
         setStockData(null);
         setStockCode(cleanCode);
         setError(null);
+        isUrlAutoSelectRef.current = false;
         return;
       }
 
@@ -102,10 +106,17 @@ export default function RefactoredHome() {
       setStockData(data);
       setStockCode(cleanCode);
       setError(null);
+
+      if (isUrlAutoSelect && data?.info?.name) {
+        const displayValue = `${cleanCode} ${data.info.name}`;
+        setInputValue(displayValue);
+        isManualSelectionRef.current = true;
+      }
     } catch (err) {
       setStockData(null);
       setStockCode(cleanCode);
       setError(null);
+      isUrlAutoSelectRef.current = false;
     } finally {
       setLoading(false);
     }
@@ -122,6 +133,10 @@ export default function RefactoredHome() {
   useEffect(() => {
     if (isManualSelectionRef.current) {
       isManualSelectionRef.current = false;
+      return;
+    }
+
+    if (isUrlAutoSelectRef.current) {
       return;
     }
 
