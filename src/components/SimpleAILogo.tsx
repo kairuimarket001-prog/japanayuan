@@ -1,25 +1,25 @@
-const FullWidthWaveBar = ({ index }: { index: number }) => {
-  const animationClass = `animate-wave-${index + 1}`;
-  const heights = [8, 12, 6, 14, 10, 8, 16, 12, 9, 11, 7, 13, 10, 15, 9];
+const WaveBar = ({ side, index }: { side: 'left' | 'right'; index: number }) => {
+  const animationClass = `animate-wave-${(index % 15) + 1}`;
+  const heights = [20, 28, 16, 35, 24, 18, 40, 26, 22, 30, 15, 32, 25, 38, 20, 28, 22, 36, 24, 30, 18, 34, 26, 32, 20];
+  const spacing = 4;
+  const offset = side === 'left' ? -80 - (index * spacing) : 80 + (index * spacing);
 
   return (
     <div
-      className="absolute left-0 right-0 top-1/2 -translate-y-1/2 pointer-events-none"
+      className="absolute top-1/2 -translate-y-1/2 pointer-events-none"
       style={{
-        height: '200px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
+        left: `calc(50% + ${offset}px)`,
+        width: '3px'
       }}
     >
       <div
-        className={`bg-white/40 rounded-full ${animationClass}`}
+        className={`bg-white/60 rounded-full ${animationClass}`}
         style={{
           width: '100%',
           height: `${heights[index]}px`,
-          filter: 'blur(2px)',
+          filter: 'blur(0.5px)',
           transformOrigin: 'center',
-          boxShadow: '0 0 15px rgba(255, 255, 255, 0.3)'
+          boxShadow: '0 0 8px rgba(255, 255, 255, 0.5)'
         }}
       />
     </div>
@@ -53,9 +53,12 @@ export default function SimpleAILogo() {
         AI株式分析
       </h1>
 
-      <div className="relative w-full h-full flex items-center justify-center">
-        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((i) => (
-          <FullWidthWaveBar key={i} index={i} />
+      <div className="relative w-full flex items-center justify-center" style={{ minHeight: '400px' }}>
+        {Array.from({ length: 25 }, (_, i) => (
+          <WaveBar key={`left-${i}`} side="left" index={i} />
+        ))}
+        {Array.from({ length: 25 }, (_, i) => (
+          <WaveBar key={`right-${i}`} side="right" index={i} />
         ))}
 
         <div className="relative z-10">
