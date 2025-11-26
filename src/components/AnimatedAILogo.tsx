@@ -1,11 +1,52 @@
+const ToyotaLogo = () => (
+  <svg viewBox="0 0 48 48" className="w-6 h-6">
+    <ellipse cx="24" cy="24" rx="12" ry="8" fill="none" stroke="currentColor" strokeWidth="2"/>
+    <ellipse cx="24" cy="24" rx="8" ry="12" fill="none" stroke="currentColor" strokeWidth="2"/>
+    <circle cx="24" cy="24" r="16" fill="none" stroke="currentColor" strokeWidth="2"/>
+  </svg>
+);
+
+const SonyLogo = () => (
+  <svg viewBox="0 0 48 48" className="w-6 h-6">
+    <text x="24" y="30" fontSize="20" fontWeight="bold" fill="currentColor" textAnchor="middle">SONY</text>
+  </svg>
+);
+
+const NintendoLogo = () => (
+  <svg viewBox="0 0 48 48" className="w-6 h-6">
+    <rect x="12" y="12" width="24" height="24" rx="4" fill="none" stroke="currentColor" strokeWidth="2"/>
+    <circle cx="20" cy="24" r="3" fill="currentColor"/>
+    <circle cx="28" cy="24" r="3" fill="currentColor"/>
+  </svg>
+);
+
+const SoftBankLogo = () => (
+  <svg viewBox="0 0 48 48" className="w-6 h-6">
+    <circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" strokeWidth="2"/>
+    <path d="M 24 14 L 24 34 M 18 20 L 30 28 M 18 28 L 30 20" stroke="currentColor" strokeWidth="2" fill="none"/>
+  </svg>
+);
+
+const HondaLogo = () => (
+  <svg viewBox="0 0 48 48" className="w-6 h-6">
+    <path d="M 14 18 L 14 30 M 14 24 L 34 24 M 34 18 L 34 30" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round"/>
+  </svg>
+);
+
+const PanasonicLogo = () => (
+  <svg viewBox="0 0 48 48" className="w-6 h-6">
+    <path d="M 16 18 L 16 30 M 16 18 L 24 18 Q 28 18 28 24 Q 28 30 24 30 L 16 30" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
 export default function AnimatedAILogo() {
   const stockLogos = [
-    { name: 'Toyota', symbol: 'T' },
-    { name: 'Sony', symbol: 'S' },
-    { name: 'Nintendo', symbol: 'N' },
-    { name: 'SoftBank', symbol: 'SB' },
-    { name: 'Honda', symbol: 'H' },
-    { name: 'Panasonic', symbol: 'P' },
+    { name: 'Toyota', component: ToyotaLogo },
+    { name: 'Sony', component: SonyLogo },
+    { name: 'Nintendo', component: NintendoLogo },
+    { name: 'SoftBank', component: SoftBankLogo },
+    { name: 'Honda', component: HondaLogo },
+    { name: 'Panasonic', component: PanasonicLogo },
   ];
 
   return (
@@ -42,8 +83,10 @@ export default function AnimatedAILogo() {
                     transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
                   }}
                 >
-                  <div className="bg-transparent w-10 h-10 rounded-full border-2 border-white/70 shadow-lg flex items-center justify-center backdrop-blur-sm animate-pulse">
-                    <span className="text-white text-xs font-bold drop-shadow-lg">{stock.symbol}</span>
+                  <div className="bg-white/90 w-12 h-12 rounded-full shadow-lg flex items-center justify-center backdrop-blur-sm animate-pulse">
+                    <div className="text-gray-800 animate-spin-slow">
+                      <stock.component />
+                    </div>
                   </div>
                 </div>
               );
