@@ -7,9 +7,10 @@ interface ModernStockInputProps {
   onChange: (value: string) => void;
   onStockSelect?: (code: string, name: string) => void;
   disableAutoDropdown?: boolean;
+  autoSelectFirst?: boolean;
 }
 
-export default function ModernStockInput({ value, onChange, onStockSelect, disableAutoDropdown = false }: ModernStockInputProps) {
+export default function ModernStockInput({ value, onChange, onStockSelect, disableAutoDropdown = false, autoSelectFirst = false }: ModernStockInputProps) {
   const { search, isLoading } = useStockSearch();
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -17,6 +18,7 @@ export default function ModernStockInput({ value, onChange, onStockSelect, disab
   const [dropdownPosition, setDropdownPosition] = useState({ left: 0, top: 0, width: 0 });
   const dropdownRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const hasAutoSelectedRef = useRef<boolean>(false);
 
   const ITEMS_PER_PAGE = 5;
 
@@ -34,12 +36,24 @@ export default function ModernStockInput({ value, onChange, onStockSelect, disab
       }
 
       setCurrentPage(0);
+
+      // Auto-select first result if enabled and not already selected
+      if (autoSelectFirst && results.length > 0 && !hasAutoSelectedRef.current && !isFullyFormatted) {
+        const firstResult = results[0];
+        hasAutoSelectedRef.current = true;
+
+        // Use setTimeout to ensure the selection happens after the state updates
+        setTimeout(() => {
+          handleStockClick(firstResult);
+        }, 0);
+      }
     } else {
       setSearchResults([]);
       setShowDropdown(false);
       setCurrentPage(0);
+      hasAutoSelectedRef.current = false;
     }
-  }, [value, search, disableAutoDropdown]);
+  }, [value, search, disableAutoDropdown, autoSelectFirst]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
