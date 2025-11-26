@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useStockSearch, SearchResult } from '../hooks/useStockSearch';
 
@@ -87,12 +88,25 @@ export default function ModernStockInput({ value, onChange, onStockSelect, disab
 
     if (showDropdown) {
       updatePosition();
-      window.addEventListener('scroll', updatePosition, true);
       window.addEventListener('resize', updatePosition);
 
       return () => {
-        window.removeEventListener('scroll', updatePosition, true);
         window.removeEventListener('resize', updatePosition);
+      };
+    }
+  }, [showDropdown]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (showDropdown) {
+        setShowDropdown(false);
+      }
+    };
+
+    if (showDropdown) {
+      window.addEventListener('scroll', handleScroll, true);
+      return () => {
+        window.removeEventListener('scroll', handleScroll, true);
       };
     }
   }, [showDropdown]);
@@ -142,7 +156,7 @@ export default function ModernStockInput({ value, onChange, onStockSelect, disab
         />
       </div>
 
-      {showDropdown && currentResults.length > 0 && (
+      {showDropdown && currentResults.length > 0 && createPortal(
         <div
           ref={dropdownRef}
           className="fixed z-[9999] bg-white rounded-2xl overflow-hidden animate-fadeIn border border-gray-200"
@@ -202,7 +216,8 @@ export default function ModernStockInput({ value, onChange, onStockSelect, disab
               </button>
             </div>
           )}
-        </div>
+        </div>,
+        document.body
       )}
 
       {isLoading && (
