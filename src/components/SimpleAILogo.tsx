@@ -1,30 +1,50 @@
-const WaveRipple = ({ side, index }: { side: 'left' | 'right'; index: number }) => {
-  const heights = [16, 20, 18, 24, 20];
-  const animationClass = `animate-wave-ripple-${index + 1}`;
-  const xOffset = side === 'left' ? -80 - (index * 18) : 80 + (index * 18);
+const FullWidthWaveBar = ({ index }: { index: number }) => {
+  const animationClass = `animate-wave-${index + 1}`;
+  const heights = [8, 12, 6, 14, 10, 8, 16, 12, 9, 11, 7, 13, 10, 15, 9];
 
   return (
     <div
-      className="absolute top-1/2 -translate-y-1/2"
-      style={{ left: `calc(50% + ${xOffset}px)` }}
+      className="absolute left-0 right-0 top-1/2 -translate-y-1/2 pointer-events-none"
+      style={{
+        height: '200px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}
     >
       <div
-        className={`w-2 bg-white/70 rounded-full backdrop-blur-sm ${animationClass}`}
+        className={`bg-white/40 rounded-full ${animationClass}`}
         style={{
+          width: '100%',
           height: `${heights[index]}px`,
-          boxShadow: '0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(192, 132, 252, 0.3)',
-          transformOrigin: 'center'
+          filter: 'blur(2px)',
+          transformOrigin: 'center',
+          boxShadow: '0 0 15px rgba(255, 255, 255, 0.3)'
         }}
       />
     </div>
   );
 };
 
+const GlowRing = ({ scale, delay }: { scale: number; delay: number }) => {
+  return (
+    <div
+      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white/20 animate-ripple-ring"
+      style={{
+        width: `${scale}px`,
+        height: `${scale}px`,
+        animationDelay: `${delay}s`,
+        filter: 'blur(1px)'
+      }}
+    />
+  );
+};
+
 export default function SimpleAILogo() {
   return (
-    <div className="flex flex-col items-center justify-center w-full h-full gap-8">
+    <div className="flex flex-col items-center justify-center w-full h-full gap-8 relative overflow-hidden">
       <h1
-        className="text-4xl font-bold bg-gradient-to-r from-white via-purple-100 to-white bg-clip-text text-transparent select-none animate-title-glow"
+        className="text-4xl font-bold bg-gradient-to-r from-white via-purple-100 to-white bg-clip-text text-transparent select-none animate-title-glow relative z-20"
         style={{
           fontFamily: "'Hiragino Sans', 'Noto Sans JP', sans-serif",
           letterSpacing: '0.05em'
@@ -33,19 +53,20 @@ export default function SimpleAILogo() {
         AI株式分析
       </h1>
 
-      <div className="flex items-center justify-center w-full h-full">
-        <div className="relative">
-          <div className="absolute inset-0 rounded-full w-32 h-32 blur-3xl opacity-60 animate-pulse"
+      <div className="relative w-full h-full flex items-center justify-center">
+        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((i) => (
+          <FullWidthWaveBar key={i} index={i} />
+        ))}
+
+        <div className="relative z-10">
+          <div className="absolute inset-0 rounded-full w-32 h-32 blur-3xl opacity-50 animate-pulse"
             style={{background: 'radial-gradient(circle, rgba(192, 132, 252, 0.8) 0%, rgba(147, 51, 234, 0.4) 100%)'}}
           />
 
-          {[0, 1, 2, 3, 4].map((i) => (
-            <WaveRipple key={`left-${i}`} side="left" index={i} />
-          ))}
-
-          {[0, 1, 2, 3, 4].map((i) => (
-            <WaveRipple key={`right-${i}`} side="right" index={i} />
-          ))}
+          <GlowRing scale={180} delay={0} />
+          <GlowRing scale={220} delay={0.8} />
+          <GlowRing scale={260} delay={1.6} />
+          <GlowRing scale={300} delay={2.4} />
 
           <div className="relative z-10 w-32 h-32 rounded-full flex items-center justify-center overflow-hidden backdrop-blur-sm border-4 border-white/30"
             style={{
@@ -59,9 +80,6 @@ export default function SimpleAILogo() {
               AI
             </span>
           </div>
-
-          <div className="absolute -inset-4 rounded-full border-2 border-white/20 animate-ping-slow" />
-          <div className="absolute -inset-8 rounded-full border border-white/10 animate-ping-slower" />
         </div>
       </div>
     </div>
