@@ -81,6 +81,7 @@ export default {
         'spin-slow': 'spin 8s linear infinite',
         'spin-medium': 'spin 5s linear infinite',
         'spin-fast': 'spin 3s linear infinite',
+        'breathe': 'breathe 3s ease-in-out infinite',
       },
       keyframes: {
         'pulse-ocean': {
@@ -94,6 +95,10 @@ export default {
         'fadeIn': {
           '0%': { opacity: 0 },
           '100%': { opacity: 1 },
+        },
+        'breathe': {
+          '0%, 100%': { transform: 'scale(1)', opacity: 1 },
+          '50%': { transform: 'scale(1.08)', opacity: 0.95 },
         },
       },
       fontFamily: {
