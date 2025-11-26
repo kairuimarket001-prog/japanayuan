@@ -6,9 +6,9 @@ interface FormContainerProps {
 
 export default function FormContainer({ children }: FormContainerProps) {
   return (
-    <div className="w-full">
+    <div className="w-[95%] mx-auto">
       <div
-        className="bg-black/80 backdrop-blur-md rounded-t-[48px] px-6 py-10 shadow-2xl border-t-2 border-x-2 border-white/10"
+        className="bg-black/80 backdrop-blur-md rounded-t-[64px] px-6 py-10 shadow-2xl border-t-2 border-x-2 border-white/10"
         style={{
           minHeight: '40vh'
         }}
