@@ -28,6 +28,7 @@ export default function DiagnosisModal({
 }: DiagnosisModalProps) {
   const contentRef = useRef<HTMLDivElement>(null);
   const lastLengthRef = useRef(0);
+  const wasStreamingRef = useRef(false);
 
   useEffect(() => {
     if (isStreaming && contentRef.current && analysis.length > lastLengthRef.current) {
@@ -35,6 +36,17 @@ export default function DiagnosisModal({
       lastLengthRef.current = analysis.length;
     }
   }, [analysis, isStreaming]);
+
+  useEffect(() => {
+    if (wasStreamingRef.current && !isStreaming && contentRef.current && analysis.length > 0) {
+      setTimeout(() => {
+        if (contentRef.current) {
+          contentRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }, 300);
+    }
+    wasStreamingRef.current = isStreaming;
+  }, [isStreaming, analysis.length]);
 
   useEffect(() => {
     if (isOpen) {
