@@ -43,6 +43,7 @@ export default function RefactoredHome() {
   const [loadingProgress, setLoadingProgress] = useState<number>(0);
   const [showLoadingScene, setShowLoadingScene] = useState<boolean>(false);
   const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const isManualSelectionRef = useRef<boolean>(false);
 
   useEffect(() => {
     if (urlParams.code) {
@@ -111,11 +112,19 @@ export default function RefactoredHome() {
   };
 
   const handleStockSelect = (code: string, name: string) => {
+    isManualSelectionRef.current = true;
+    const displayValue = `${code} ${name}`;
+    setInputValue(displayValue);
     setStockCode(code);
     fetchStockData(code);
   };
 
   useEffect(() => {
+    if (isManualSelectionRef.current) {
+      isManualSelectionRef.current = false;
+      return;
+    }
+
     const timer = setTimeout(() => {
       if (inputValue) {
         fetchStockData(inputValue);
