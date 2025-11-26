@@ -89,25 +89,25 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="bg-gradient-to-br">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       {/* Header */}
-      <div className="bg-white">
-        <div >
-          <div >
-            <div >
-              <div className="bg-slate-900">
-                <BarChart3  />
+      <div className="bg-white border-b border-slate-200 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="bg-slate-900 p-2 rounded-lg">
+                <BarChart3 className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 >广告管理后台</h1>
-                <p >用户行为分析与API监控</p>
+                <h1 className="text-xl font-bold text-slate-900">广告管理后台</h1>
+                <p className="text-sm text-slate-600">用户行为分析与API监控</p>
               </div>
             </div>
             <button
               onClick={handleLogout}
-              className="bg-slate-100"
+              className="flex items-center gap-2 px-4 py-2 text-slate-700 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition"
             >
-              <LogOut  />
+              <LogOut className="w-4 h-4" />
               <span>退出登录</span>
             </button>
           </div>
@@ -115,9 +115,9 @@ export default function AdminDashboard() {
       </div>
 
       {/* Tabs */}
-      <div className="bg-white">
-        <div >
-          <div >
+      <div className="bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex gap-1">
             <button
               onClick={() => setActiveTab('overview')}
               className={`px-6 py-3 font-medium border-b-2 transition ${
@@ -126,8 +126,8 @@ export default function AdminDashboard() {
                   : 'border-transparent text-slate-600 hover:text-slate-900'
               }`}
             >
-              <div >
-                <Activity  />
+              <div className="flex items-center gap-2">
+                <Activity className="w-4 h-4" />
                 <span>总览</span>
               </div>
             </button>
@@ -139,8 +139,8 @@ export default function AdminDashboard() {
                   : 'border-transparent text-slate-600 hover:text-slate-900'
               }`}
             >
-              <div >
-                <Users  />
+              <div className="flex items-center gap-2">
+                <Users className="w-4 h-4" />
                 <span>用户会话</span>
               </div>
             </button>
@@ -152,8 +152,8 @@ export default function AdminDashboard() {
                   : 'border-transparent text-slate-600 hover:text-slate-900'
               }`}
             >
-              <div >
-                <Link2  />
+              <div className="flex items-center gap-2">
+                <Link2 className="w-4 h-4" />
                 <span>分流链接</span>
               </div>
             </button>
@@ -165,8 +165,8 @@ export default function AdminDashboard() {
                   : 'border-transparent text-slate-600 hover:text-slate-900'
               }`}
             >
-              <div >
-                <Settings  />
+              <div className="flex items-center gap-2">
+                <Settings className="w-4 h-4" />
                 <span>Google追踪</span>
               </div>
             </button>
@@ -175,11 +175,11 @@ export default function AdminDashboard() {
       </div>
 
       {/* Content */}
-      <div >
+      <div className="max-w-7xl mx-auto px-4 py-8">
         {loading && activeTab === 'overview' ? (
-          <div >
-            <div ></div>
-            <p >加载数据中...</p>
+          <div className="text-center py-20">
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-slate-300 border-t-slate-900"></div>
+            <p className="mt-4 text-slate-600">加载数据中...</p>
           </div>
         ) : activeTab === 'overview' ? (
           <OverviewTab stats={stats} apiStats={apiStats} />
@@ -197,37 +197,37 @@ export default function AdminDashboard() {
 
 function OverviewTab({ stats, apiStats }: { stats: Stats | null; apiStats: ApiStats | null }) {
   return (
-    <div >
+    <div className="space-y-6">
       {/* User Activity Stats */}
       <div>
-        <h2 >用户活动统计 (最近7天)</h2>
-        <div >
+        <h2 className="text-lg font-bold text-slate-900 mb-4">用户活动统计 (最近7天)</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
           <StatCard
-            icon={<Users  />}
+            icon={<Users className="w-6 h-6" />}
             label="总访问量"
             value={stats?.totalSessions || 0}
             color="blue"
           />
           <StatCard
-            icon={<Clock  />}
+            icon={<Clock className="w-6 h-6" />}
             label="诊断次数"
             value={stats?.diagnoses || 0}
             color="purple"
           />
           <StatCard
-            icon={<FileDown  />}
+            icon={<FileDown className="w-6 h-6" />}
             label="レポートダウンロード数"
             value={stats?.reportDownloads || 0}
             color="purple"
           />
           <StatCard
-            icon={<CheckCircle2  />}
+            icon={<CheckCircle2 className="w-6 h-6" />}
             label="转化次数"
             value={stats?.conversions || 0}
             color="green"
           />
           <StatCard
-            icon={<TrendingUp  />}
+            icon={<TrendingUp className="w-6 h-6" />}
             label="转化率"
             value={`${stats?.conversionRate.toFixed(2) || 0}%`}
             color="orange"
@@ -237,28 +237,28 @@ function OverviewTab({ stats, apiStats }: { stats: Stats | null; apiStats: ApiSt
 
       {/* API Usage Stats */}
       <div>
-        <h2 >API使用统计 (最近24小时)</h2>
-        <div >
+        <h2 className="text-lg font-bold text-slate-900 mb-4">API使用统计 (最近24小时)</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <StatCard
-            icon={<Activity  />}
+            icon={<Activity className="w-6 h-6" />}
             label="总请求数"
             value={apiStats?.requestsTotal || 0}
             color="blue"
           />
           <StatCard
-            icon={<CheckCircle2  />}
+            icon={<CheckCircle2 className="w-6 h-6" />}
             label="缓存命中"
             value={apiStats?.cacheHits || 0}
             color="green"
           />
           <StatCard
-            icon={<XCircle  />}
+            icon={<XCircle className="w-6 h-6" />}
             label="API调用"
             value={apiStats?.apiCalls || 0}
             color="red"
           />
           <StatCard
-            icon={<TrendingUp  />}
+            icon={<TrendingUp className="w-6 h-6" />}
             label="缓存命中率"
             value={`${apiStats?.cacheHitRate.toFixed(1) || 0}%`}
             color="purple"
@@ -267,9 +267,9 @@ function OverviewTab({ stats, apiStats }: { stats: Stats | null; apiStats: ApiSt
       </div>
 
       {/* Conversion Funnel */}
-      <div className="bg-white">
-        <h3 >转化漏斗</h3>
-        <div >
+      <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+        <h3 className="text-lg font-bold text-slate-900 mb-4">转化漏斗</h3>
+        <div className="space-y-3">
           <FunnelStep
             label="页面访问"
             value={stats?.pageLoads || 0}
@@ -312,12 +312,12 @@ function StatCard({ icon, label, value, color }: StatCardProps) {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
       <div className={`inline-flex p-3 rounded-lg ${colorClasses[color]} mb-3`}>
         {icon}
       </div>
-      <p >{value}</p>
-      <p >{label}</p>
+      <p className="text-2xl font-bold text-slate-900">{value}</p>
+      <p className="text-sm text-slate-600 mt-1">{label}</p>
     </div>
   );
 }
@@ -340,13 +340,13 @@ function FunnelStep({ label, value, total, color }: FunnelStepProps) {
 
   return (
     <div>
-      <div >
-        <span >{label}</span>
-        <span >
+      <div className="flex items-center justify-between mb-2">
+        <span className="text-sm font-medium text-slate-700">{label}</span>
+        <span className="text-sm font-bold text-slate-900">
           {value} ({percentage.toFixed(1)}%)
         </span>
       </div>
-      <div className="bg-slate-100">
+      <div className="h-3 bg-slate-100 rounded-full overflow-hidden">
         <div
           className={`h-full ${colorClasses[color]} transition-all duration-300`}
           style={{ width: `${percentage}%` }}

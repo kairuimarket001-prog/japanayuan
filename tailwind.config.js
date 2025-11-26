@@ -51,6 +51,10 @@ export default {
         'amber-700': '#b45309',
         'amber-800': '#92400e',
         'amber-900': '#78350f',
+
+        // Legacy aliases (for gradual migration)
+        'light-blue': '#e0f2fe',
+        'pale-blue': '#dbeafe',
       },
       backgroundImage: {
         'ocean-gradient': 'linear-gradient(to bottom, #f0f9ff, #e0f2fe, #bae6fd)',
@@ -61,6 +65,45 @@ export default {
         'amber-gradient': 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
         'ocean-coral': 'linear-gradient(135deg, #0ea5e9 0%, #38bdf8 50%, #fb923c 100%)',
         'peaceful-sky': 'linear-gradient(to bottom, #ffffff, #f0f9ff, #e0f2fe)',
+      },
+      boxShadow: {
+        'ocean-glow': '0 0 20px rgba(14, 165, 233, 0.4)',
+        'ocean-glow-lg': '0 0 40px rgba(14, 165, 233, 0.5)',
+        'teal-glow': '0 0 20px rgba(20, 184, 166, 0.4)',
+        'teal-glow-lg': '0 0 40px rgba(20, 184, 166, 0.5)',
+        'coral-glow': '0 0 20px rgba(251, 146, 60, 0.4)',
+        'amber-glow': '0 0 15px rgba(251, 191, 36, 0.5)',
+      },
+      animation: {
+        'pulse-ocean': 'pulse-ocean 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'float-rotate': 'float-rotate 4s ease-in-out infinite',
+        'fadeIn': 'fadeIn 0.3s ease-in',
+      },
+      keyframes: {
+        'pulse-ocean': {
+          '0%, 100%': { opacity: 1, boxShadow: '0 0 20px rgba(14, 165, 233, 0.4)' },
+          '50%': { opacity: 0.9, boxShadow: '0 0 40px rgba(14, 165, 233, 0.6)' },
+        },
+        'float-rotate': {
+          '0%, 100%': { transform: 'rotate(0deg) translateY(0)' },
+          '50%': { transform: 'rotate(5deg) translateY(-10px)' },
+        },
+        'fadeIn': {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 },
+        },
+      },
+      fontFamily: {
+        'title': ['HYYaKuHeiW', 'Noto Sans JP', 'sans-serif'],
+        'subtitle': ['Adobe Heiti Std', 'Hiragino Sans', 'sans-serif'],
+      },
+      spacing: {
+        '7.5': '30px',
+      },
+      borderRadius: {
+        'modern-xl': '20px',
+        'modern-lg': '16px',
+        'modern-md': '12px',
       },
     },
   },

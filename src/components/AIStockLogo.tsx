@@ -6,7 +6,7 @@ export default function AIStockLogo() {
       viewBox="0 0 192 192"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      
+      className="w-auto h-48 drop-shadow-2xl"
     >
       <defs>
         <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">

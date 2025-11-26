@@ -1,12 +1,12 @@
 export default function AIRobotLogo() {
   return (
-    <div >
+    <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 mx-auto animate-robot-float transition-transform hover:scale-110 duration-300">
       <svg
         viewBox="0 0 200 200"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        
-        
+        className="w-full h-full drop-shadow-2xl"
+        style={{ filter: 'drop-shadow(0 0 10px rgba(139, 131, 255, 0.3))' }}
       >
         <defs>
           <linearGradient id="robotGradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -19,7 +19,7 @@ export default function AIRobotLogo() {
           </linearGradient>
         </defs>
 
-        <g >
+        <g className="robot-body">
           <rect
             x="60"
             y="50"
@@ -31,7 +31,7 @@ export default function AIRobotLogo() {
             strokeWidth="3"
           />
 
-          <circle cx="85" cy="75" r="8" fill="white" >
+          <circle cx="85" cy="75" r="8" fill="white" className="robot-eye-left">
             <animate
               attributeName="ry"
               values="8;1;8"
@@ -40,9 +40,9 @@ export default function AIRobotLogo() {
               begin="2s"
             />
           </circle>
-          <circle cx="85" cy="75" r="4" fill="#4A42C7"  />
+          <circle cx="85" cy="75" r="4" fill="#4A42C7" className="robot-pupil-left" />
 
-          <circle cx="115" cy="75" r="8" fill="white" >
+          <circle cx="115" cy="75" r="8" fill="white" className="robot-eye-right">
             <animate
               attributeName="ry"
               values="8;1;8"
@@ -51,7 +51,7 @@ export default function AIRobotLogo() {
               begin="2s"
             />
           </circle>
-          <circle cx="115" cy="75" r="4" fill="#4A42C7"  />
+          <circle cx="115" cy="75" r="4" fill="#4A42C7" className="robot-pupil-right" />
 
           <path
             d="M 85 95 Q 100 105 115 95"
@@ -68,7 +68,7 @@ export default function AIRobotLogo() {
           <rect x="135" y="80" width="15" height="40" rx="8" fill="url(#robotGradient)" />
         </g>
 
-        <g  transform="translate(70, 140)">
+        <g className="book-group animate-book-read" transform="translate(70, 140)">
           <rect
             x="0"
             y="0"
@@ -88,7 +88,7 @@ export default function AIRobotLogo() {
           <line x1="38" y1="29" x2="50" y2="29" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
         </g>
 
-        <g >
+        <g className="magnifier-group animate-magnifier-scan">
           <circle cx="30" cy="165" r="18" fill="rgba(255,255,255,0.2)" stroke="#FFD700" strokeWidth="3" />
           <circle cx="30" cy="165" r="12" fill="rgba(255,255,255,0.4)" />
           <line x1="42" y1="177" x2="52" y2="187" stroke="#FFD700" strokeWidth="3" strokeLinecap="round" />

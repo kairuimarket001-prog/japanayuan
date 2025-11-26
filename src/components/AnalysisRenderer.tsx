@@ -20,7 +20,7 @@ const parseNumber = (text: string): ReactNode[] => {
       parts.push(text.substring(lastIndex, match.index));
     }
     parts.push(
-      <span key={match.index} >
+      <span key={match.index} className="text-blue-600 font-semibold text-lg">
         {match[0]}
       </span>
     );
@@ -49,17 +49,17 @@ export default function AnalysisRenderer({ text }: AnalysisRendererProps) {
   const parsedLines = lines.map(parseLine);
 
   return (
-    <div >
+    <div className="leading-relaxed space-y-2 text-sm">
       {parsedLines.map((line, index) => {
         if (line.type === 'bold') {
           return (
-            <div key={index} >
+            <div key={index} className="font-bold text-blue-900 mt-4 mb-2">
               {line.content}
             </div>
           );
         }
         return (
-          <div key={index} >
+          <div key={index} className="text-gray-700">
             {line.content}
           </div>
         );

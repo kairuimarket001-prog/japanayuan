@@ -133,15 +133,15 @@ export default function LineRedirectsTab() {
 
   if (loading) {
     return (
-      <div >
-        <div ></div>
-        <p >加载分流链接...</p>
+      <div className="text-center py-20">
+        <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-slate-300 border-t-slate-900"></div>
+        <p className="mt-4 text-slate-600">加载分流链接...</p>
         {error && (
-          <div className="bg-red-50">
-            <p >{error}</p>
+          <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg max-w-md mx-auto">
+            <p className="text-red-600">{error}</p>
             <button
               onClick={loadLinks}
-              className="bg-red-600 bg-red-700"
+              className="mt-2 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm"
             >
               重试
             </button>
@@ -153,12 +153,12 @@ export default function LineRedirectsTab() {
 
   if (error && !loading) {
     return (
-      <div >
-        <div className="bg-red-50">
-          <p >{error}</p>
+      <div className="text-center py-20">
+        <div className="p-6 bg-red-50 border border-red-200 rounded-lg max-w-md mx-auto">
+          <p className="text-red-600 mb-4">{error}</p>
           <button
             onClick={loadLinks}
-            className="bg-red-600 bg-red-700"
+            className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg"
           >
             重新加载
           </button>
@@ -168,42 +168,42 @@ export default function LineRedirectsTab() {
   }
 
   return (
-    <div >
+    <div className="space-y-6">
       {/* Header */}
-      <div >
+      <div className="flex items-center justify-between">
         <div>
-          <h2 >LINE分流链接管理</h2>
-          <p >创建和管理多个LINE链接，系统将根据权重自动分配流量</p>
+          <h2 className="text-2xl font-bold text-slate-900">LINE分流链接管理</h2>
+          <p className="text-sm text-slate-600 mt-1">创建和管理多个LINE链接，系统将根据权重自动分配流量</p>
         </div>
         <button
           onClick={() => setShowAddForm(!showAddForm)}
-          className="bg-blue-600 bg-blue-700"
+          className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition"
         >
-          {showAddForm ? <X  /> : <Plus  />}
+          {showAddForm ? <X className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
           {showAddForm ? '取消' : '添加链接'}
         </button>
       </div>
 
       {/* Add Form */}
       {showAddForm && (
-        <div className="bg-white">
-          <h3 >添加新的LINE链接</h3>
-          <div >
+        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+          <h3 className="font-bold text-slate-900 mb-4">添加新的LINE链接</h3>
+          <div className="space-y-4">
             <div>
-              <label >
-                LINE URL <span >*</span>
+              <label className="block text-sm font-medium text-slate-700 mb-2">
+                LINE URL <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 value={newLink.redirect_url}
                 onChange={(e) => setNewLink({ ...newLink, redirect_url: e.target.value })}
                 placeholder="https://line.me/R/ti/p/@example"
-                
+                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
               />
             </div>
             <div>
-              <label >
-                权重 (1-100) <span >*</span>
+              <label className="block text-sm font-medium text-slate-700 mb-2">
+                权重 (1-100) <span className="text-red-500">*</span>
               </label>
               <input
                 type="number"
@@ -211,24 +211,24 @@ export default function LineRedirectsTab() {
                 max="100"
                 value={newLink.weight}
                 onChange={(e) => setNewLink({ ...newLink, weight: parseInt(e.target.value) || 1 })}
-                
+                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
               />
-              <p >权重越高，被选中的概率越大</p>
+              <p className="text-xs text-slate-500 mt-1">权重越高，被选中的概率越大</p>
             </div>
-            <div >
+            <div className="flex gap-3">
               <button
                 onClick={handleAddLink}
                 disabled={saving}
-                className="bg-green-600 bg-green-700 bg-slate-400"
+                className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 disabled:bg-slate-400 disabled:cursor-not-allowed text-white rounded-lg font-medium transition"
               >
                 {saving ? (
                   <>
-                    <div  />
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                     保存中...
                   </>
                 ) : (
                   <>
-                    <Save  />
+                    <Save className="w-4 h-4" />
                     保存
                   </>
                 )}
@@ -238,7 +238,7 @@ export default function LineRedirectsTab() {
                   setShowAddForm(false);
                   setNewLink({ redirect_url: '', weight: 50 });
                 }}
-                className="bg-slate-200 bg-slate-300"
+                className="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-lg font-medium transition"
               >
                 取消
               </button>
@@ -248,24 +248,24 @@ export default function LineRedirectsTab() {
       )}
 
       {/* Weight Distribution */}
-      <div className="bg-gradient-to-r">
-        <div >
-          <BarChart3  />
-          <h3 >权重分布</h3>
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl shadow-sm border border-blue-200 p-6">
+        <div className="flex items-center gap-2 mb-3">
+          <BarChart3 className="w-5 h-5 text-blue-600" />
+          <h3 className="font-bold text-slate-900">权重分布</h3>
         </div>
-        <div >总权重: {totalWeight}</div>
-        <p >
+        <div className="text-2xl font-bold text-blue-600 mb-2">总权重: {totalWeight}</div>
+        <p className="text-sm text-slate-600">
           活跃链接: {links.filter(l => l.is_active).length} / {links.length}
         </p>
       </div>
 
       {/* Links List */}
-      <div >
+      <div className="space-y-4">
         {links.length === 0 ? (
-          <div className="bg-white">
-            <Link2  />
-            <p >还没有创建任何分流链接</p>
-            <p >点击上方"添加链接"按钮开始创建</p>
+          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-12 text-center">
+            <Link2 className="w-12 h-12 text-slate-400 mx-auto mb-4" />
+            <p className="text-slate-600">还没有创建任何分流链接</p>
+            <p className="text-sm text-slate-500 mt-2">点击上方"添加链接"按钮开始创建</p>
           </div>
         ) : (
           links.map((link) => (
@@ -276,39 +276,39 @@ export default function LineRedirectsTab() {
               }`}
             >
               {editingId === link.id ? (
-                <div >
-                  <div >
+                <div className="p-6">
+                  <div className="space-y-4">
                     <div>
-                      <label >LINE URL</label>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">LINE URL</label>
                       <input
                         type="text"
                         value={editForm.redirect_url}
                         onChange={(e) => setEditForm({ ...editForm, redirect_url: e.target.value })}
-                        
+                        className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                       />
                     </div>
                     <div>
-                      <label >权重</label>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">权重</label>
                       <input
                         type="number"
                         min="1"
                         max="100"
                         value={editForm.weight}
                         onChange={(e) => setEditForm({ ...editForm, weight: parseInt(e.target.value) || 1 })}
-                        
+                        className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                       />
                     </div>
-                    <div >
+                    <div className="flex gap-3">
                       <button
                         onClick={() => handleUpdateLink(link.id)}
-                        className="bg-green-600 bg-green-700"
+                        className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition"
                       >
-                        <Save  />
+                        <Save className="w-4 h-4" />
                         保存
                       </button>
                       <button
                         onClick={() => setEditingId(null)}
-                        className="bg-slate-200 bg-slate-300"
+                        className="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-lg font-medium transition"
                       >
                         取消
                       </button>
@@ -316,40 +316,40 @@ export default function LineRedirectsTab() {
                   </div>
                 </div>
               ) : (
-                <div >
-                  <div >
-                    <div >
-                      <div >
+                <div className="p-6">
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-2">
                         <Link2 className={`w-5 h-5 ${link.is_active ? 'text-blue-600' : 'text-slate-400'}`} />
                         <a
                           href={link.redirect_url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          
+                          className="text-blue-600 hover:text-blue-700 hover:underline font-medium break-all"
                         >
                           {link.redirect_url}
                         </a>
                       </div>
-                      <div >
+                      <div className="flex items-center gap-4 text-sm text-slate-600 ml-8">
                         <div>
-                          <span >权重:</span>{' '}
-                          <span >{link.weight}</span>
+                          <span className="font-medium">权重:</span>{' '}
+                          <span className="font-bold text-slate-900">{link.weight}</span>
                         </div>
                         <div>
-                          <span >命中次数:</span>{' '}
-                          <span >{link.hit_count}</span>
+                          <span className="font-medium">命中次数:</span>{' '}
+                          <span className="font-bold text-slate-900">{link.hit_count}</span>
                         </div>
                         {totalWeight > 0 && link.is_active && (
                           <div>
-                            <span >概率:</span>{' '}
-                            <span >
+                            <span className="font-medium">概率:</span>{' '}
+                            <span className="font-bold text-green-600">
                               {((link.weight / totalWeight) * 100).toFixed(1)}%
                             </span>
                           </div>
                         )}
                       </div>
                     </div>
-                    <div >
+                    <div className="flex items-center gap-2">
                       <button
                         onClick={() => handleToggleActive(link)}
                         className={`p-2 rounded-lg transition ${
@@ -359,21 +359,21 @@ export default function LineRedirectsTab() {
                         }`}
                         title={link.is_active ? '禁用' : '启用'}
                       >
-                        <Power  />
+                        <Power className="w-4 h-4" />
                       </button>
                       <button
                         onClick={() => startEdit(link)}
-                        className="bg-blue-100 bg-blue-200"
+                        className="p-2 bg-blue-100 text-blue-600 hover:bg-blue-200 rounded-lg transition"
                         title="编辑"
                       >
-                        <Edit2  />
+                        <Edit2 className="w-4 h-4" />
                       </button>
                       <button
                         onClick={() => handleDeleteLink(link.id)}
-                        className="bg-red-100 bg-red-200"
+                        className="p-2 bg-red-100 text-red-600 hover:bg-red-200 rounded-lg transition"
                         title="删除"
                       >
-                        <Trash2  />
+                        <Trash2 className="w-4 h-4" />
                       </button>
                     </div>
                   </div>

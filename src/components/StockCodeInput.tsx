@@ -79,10 +79,10 @@ export default function StockCodeInput({ value, onChange, onStockSelect }: Stock
   };
 
   return (
-    <div >
-      <div >
-        <div >
-          <Search  />
+    <div className="relative max-w-md mx-auto">
+      <div className="relative">
+        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+          <Search className="w-6 h-6" />
         </div>
         <input
           ref={inputRef}
@@ -91,7 +91,7 @@ export default function StockCodeInput({ value, onChange, onStockSelect }: Stock
           onChange={(e) => onChange(e.target.value)}
           onFocus={handleInputFocus}
           placeholder="输入股票代码或名称"
-          className="bg-white"
+          className="w-full pl-14 pr-6 py-4 text-lg font-semibold text-gray-800 bg-white border-4 border-blue-400 rounded-xl shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 focus:border-blue-500 transition-all"
           disabled={isLoading}
         />
       </div>
@@ -99,21 +99,21 @@ export default function StockCodeInput({ value, onChange, onStockSelect }: Stock
       {showDropdown && currentResults.length > 0 && (
         <div
           ref={dropdownRef}
-          className="bg-white"
+          className="absolute z-50 w-full mt-2 bg-white border-2 border-blue-200 rounded-xl shadow-xl overflow-hidden"
         >
-          <div >
+          <div className="max-h-80 overflow-y-auto">
             {currentResults.map((stock, index) => (
               <button
                 key={`${stock.code}-${index}`}
                 onClick={() => handleStockClick(stock)}
-                className="bg-blue-50"
+                className="w-full px-4 py-3 text-left hover:bg-blue-50 transition-colors border-b border-gray-100 last:border-b-0"
               >
-                <div >
+                <div className="flex items-center justify-between">
                   <div>
-                    <div >{stock.code}</div>
-                    <div >{stock.name}</div>
+                    <div className="font-semibold text-gray-900">{stock.code}</div>
+                    <div className="text-sm text-gray-600">{stock.name}</div>
                   </div>
-                  <div className="bg-gray-100">
+                  <div className="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded">
                     {stock.market}
                   </div>
                 </div>
@@ -122,27 +122,27 @@ export default function StockCodeInput({ value, onChange, onStockSelect }: Stock
           </div>
 
           {totalPages > 1 && (
-            <div className="bg-gray-50">
+            <div className="flex items-center justify-between px-4 py-2 bg-gray-50 border-t border-gray-200">
               <button
                 onClick={handlePrevPage}
                 disabled={currentPage === 0}
-                className="bg-white bg-gray-100"
+                className="flex items-center gap-1 px-3 py-1 text-sm text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
-                <ChevronLeft  />
+                <ChevronLeft className="w-4 h-4" />
                 上一页
               </button>
 
-              <div >
+              <div className="text-sm text-gray-600">
                 {currentPage + 1} / {totalPages} 页 (共 {searchResults.length} 个结果)
               </div>
 
               <button
                 onClick={handleNextPage}
                 disabled={currentPage === totalPages - 1}
-                className="bg-white bg-gray-100"
+                className="flex items-center gap-1 px-3 py-1 text-sm text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 下一页
-                <ChevronRight  />
+                <ChevronRight className="w-4 h-4" />
               </button>
             </div>
           )}
@@ -150,7 +150,7 @@ export default function StockCodeInput({ value, onChange, onStockSelect }: Stock
       )}
 
       {isLoading && (
-        <div >
+        <div className="absolute left-0 right-0 top-full mt-2 text-center text-sm text-gray-500">
           加载股票数据中...
         </div>
       )}

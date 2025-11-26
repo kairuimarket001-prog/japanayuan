@@ -20,10 +20,10 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
 
   if (isAuthenticated === null) {
     return (
-      <div className="bg-slate-50">
-        <div >
-          <div ></div>
-          <p >验证身份中...</p>
+      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+        <div className="text-center">
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-slate-300 border-t-slate-900"></div>
+          <p className="mt-4 text-slate-600">验证身份中...</p>
         </div>
       </div>
     );

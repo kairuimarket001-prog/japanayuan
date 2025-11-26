@@ -221,16 +221,16 @@ export default function VideoBackground() {
   }, []);
 
   return (
-    <div >
-      <div className="bg-gradient-to-br">
+    <div className="fixed inset-0 w-full h-full overflow-hidden z-0">
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900">
         <canvas
           ref={canvasRef}
-          
+          className="absolute inset-0 w-full h-full"
         />
       </div>
 
-      <div className="bg-gradient-to-br"></div>
-      <div className="bg-black/30"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 via-slate-900/50 to-gray-900/60"></div>
+      <div className="absolute inset-0 bg-black/30 backdrop-blur-[0.5px]"></div>
     </div>
   );
 }
