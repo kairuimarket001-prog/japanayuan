@@ -78,6 +78,9 @@ export default {
         'pulse-ocean': 'pulse-ocean 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'float-rotate': 'float-rotate 4s ease-in-out infinite',
         'fadeIn': 'fadeIn 0.3s ease-in',
+        'spin-slow': 'spin 8s linear infinite',
+        'spin-medium': 'spin 5s linear infinite',
+        'spin-fast': 'spin 3s linear infinite',
       },
       keyframes: {
         'pulse-ocean': {
