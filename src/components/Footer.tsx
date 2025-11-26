@@ -150,7 +150,7 @@ export default function Footer() {
           {/* Copyright Section */}
           <div className="border-t border-white/30 pt-4 text-center">
             <p className="text-xs sm:text-sm text-white drop-shadow-lg mb-2 font-medium">
-              &copy; {currentYear} 株式会社デジタルアド (DigitalAd Co., Ltd.). All rights reserved.
+              &copy; {currentYear} 株式会社アドバンティ (Advanti Co., Ltd.). All rights reserved.
             </p>
             <p className="text-[10px] sm:text-xs text-white/90 drop-shadow-lg leading-relaxed max-w-3xl mx-auto mb-4">
               当サイトで提供される情報は投資勧誘を目的としたものではありません。
@@ -160,8 +160,8 @@ export default function Footer() {
 
             {/* Service Information */}
             <div className="text-[10px] sm:text-xs text-white/80 drop-shadow-lg space-y-1">
-              <p>株式会社デジタルアド（DigitalAd Co., Ltd.）</p>
-              <p>〒163-0534 東京都新宿区西新宿1-6-1 新宿野村ビル21階</p>
+              <p>株式会社アドバンティ（Advanti Co., Ltd.）</p>
+              <p>〒108-0014 東京都港区芝5-31-19 港ビル8階</p>
             </div>
           </div>
         </div>

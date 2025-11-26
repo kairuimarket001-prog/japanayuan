@@ -163,16 +163,16 @@ export default function Contact() {
                 運営会社情報
               </h3>
               <p className="text-sm text-gray-700 mb-2">
-                <strong>会社名:</strong> 株式会社デジタルアド（DigitalAd Co., Ltd.）
+                <strong>会社名:</strong> 株式会社アドバンティ（Advanti Co., Ltd.）
               </p>
               <p className="text-sm text-gray-700 mb-2">
-                <strong>所在地:</strong> 〒163-0534 東京都新宿区西新宿1-6-1 新宿野村ビル21階
+                <strong>所在地:</strong> 〒108-0014 東京都港区芝5-31-19 港ビル8階
               </p>
               <p className="text-sm text-gray-700 mb-2">
-                <strong>設立:</strong> 2014年5月
+                <strong>設立:</strong> 2015年9月
               </p>
               <p className="text-sm text-gray-700 mb-2">
-                <strong>業種:</strong> デジタル広告／データ分析／広告運用最適化
+                <strong>業種:</strong> デジタルマーケティング／広告運用／データ分析
               </p>
               <p className="text-sm text-gray-700 mb-2">
                 <strong>メールアドレス:</strong> support@ostosk.jp

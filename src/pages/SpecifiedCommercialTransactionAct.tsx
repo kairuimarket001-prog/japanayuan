@@ -36,26 +36,26 @@ export default function SpecifiedCommercialTransactionAct() {
                   <dl className="space-y-3">
                     <div className="grid sm:grid-cols-3 gap-2">
                       <dt className="font-semibold text-gray-900">会社名</dt>
-                      <dd className="sm:col-span-2 text-gray-700">株式会社デジタルアド</dd>
+                      <dd className="sm:col-span-2 text-gray-700">株式会社アドバンティ</dd>
                     </div>
                     <div className="grid sm:grid-cols-3 gap-2">
                       <dt className="font-semibold text-gray-900">会社名（英語）</dt>
-                      <dd className="sm:col-span-2 text-gray-700">DigitalAd Co., Ltd.</dd>
+                      <dd className="sm:col-span-2 text-gray-700">Advanti Co., Ltd.</dd>
                     </div>
                     <div className="grid sm:grid-cols-3 gap-2">
                       <dt className="font-semibold text-gray-900">所在地</dt>
                       <dd className="sm:col-span-2 text-gray-700">
-                        〒163-0534<br />
-                        東京都新宿区西新宿1-6-1 新宿野村ビル21階
+                        〒108-0014<br />
+                        東京都港区芝5-31-19 港ビル8階
                       </dd>
                     </div>
                     <div className="grid sm:grid-cols-3 gap-2">
                       <dt className="font-semibold text-gray-900">設立</dt>
-                      <dd className="sm:col-span-2 text-gray-700">2014年5月</dd>
+                      <dd className="sm:col-span-2 text-gray-700">2015年9月</dd>
                     </div>
                     <div className="grid sm:grid-cols-3 gap-2">
                       <dt className="font-semibold text-gray-900">業種</dt>
-                      <dd className="sm:col-span-2 text-gray-700">デジタル広告／データ分析／広告運用最適化</dd>
+                      <dd className="sm:col-span-2 text-gray-700">デジタルマーケティング／広告運用／データ分析</dd>
                     </div>
                   </dl>
                 </div>

@@ -27,7 +27,7 @@ export default function Terms() {
             <section className="mb-8">
               <h2 className="text-xl font-bold text-gray-900 mb-4">第1条（適用）</h2>
               <p className="text-gray-700 leading-relaxed mb-3">
-                本規約は、AI株式診断サービス（以下「当サービス」といいます）の利用に関する条件を、当サービスを利用する全ての方（以下「利用者」といいます）と株式会社デジタルアド（以下「当社」といいます）との間で定めるものです。
+                本規約は、AI株式診断サービス（以下「当サービス」といいます）の利用に関する条件を、当サービスを利用する全ての方（以下「利用者」といいます）と株式会社アドバンティ（以下「当社」といいます）との間で定めるものです。
               </p>
               <p className="text-gray-700 leading-relaxed">
                 利用者は、当サービスを利用することにより、本規約の全ての内容に同意したものとみなされます。
