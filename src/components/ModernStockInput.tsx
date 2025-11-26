@@ -75,24 +75,26 @@ export default function ModernStockInput({ value, onChange, onStockSelect, disab
 
   useEffect(() => {
     const updatePosition = () => {
-      if (inputRef.current && showDropdown) {
+      if (inputRef.current) {
         const rect = inputRef.current.getBoundingClientRect();
         setDropdownPosition({
           left: rect.left,
-          top: rect.bottom + 12,
+          top: rect.bottom + 8,
           width: rect.width
         });
       }
     };
 
-    updatePosition();
-    window.addEventListener('scroll', updatePosition, true);
-    window.addEventListener('resize', updatePosition);
+    if (showDropdown) {
+      updatePosition();
+      window.addEventListener('scroll', updatePosition, true);
+      window.addEventListener('resize', updatePosition);
 
-    return () => {
-      window.removeEventListener('scroll', updatePosition, true);
-      window.removeEventListener('resize', updatePosition);
-    };
+      return () => {
+        window.removeEventListener('scroll', updatePosition, true);
+        window.removeEventListener('resize', updatePosition);
+      };
+    }
   }, [showDropdown]);
 
   const totalPages = Math.ceil(searchResults.length / ITEMS_PER_PAGE);
@@ -143,14 +145,17 @@ export default function ModernStockInput({ value, onChange, onStockSelect, disab
       {showDropdown && currentResults.length > 0 && (
         <div
           ref={dropdownRef}
-          className="fixed z-[99999] bg-white rounded-2xl shadow-2xl overflow-hidden animate-fadeIn border border-gray-200"
+          className="fixed z-[9999] bg-white rounded-2xl overflow-hidden animate-fadeIn border border-gray-200"
           style={{
-            left: dropdownPosition.left + 'px',
-            top: dropdownPosition.top + 'px',
-            width: dropdownPosition.width + 'px'
+            left: `${dropdownPosition.left}px`,
+            top: `${dropdownPosition.top}px`,
+            width: `${dropdownPosition.width}px`,
+            maxHeight: '400px',
+            boxShadow: '0 10px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.1)',
+            pointerEvents: 'auto'
           }}
         >
-          <div className="max-h-80 overflow-y-auto">
+          <div className="max-h-80 overflow-y-auto" style={{ overflowY: 'auto' }}>
             {currentResults.map((stock, index) => (
               <button
                 key={`${stock.code}-${index}`}

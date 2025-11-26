@@ -453,10 +453,10 @@ export default function RefactoredHome() {
   };
 
   return (
-    <div className="min-h-screen relative flex flex-col">
+    <div className="min-h-screen relative flex flex-col overflow-visible">
       <DreamyPurpleBackground />
 
-      <div className="relative z-10 flex-1 flex flex-col">
+      <div className="relative z-10 flex-1 flex flex-col overflow-visible">
         <div className="pt-8">
           <ApiStatsDisplay />
         </div>
