@@ -347,4 +347,102 @@
   .animate-pulse-glow {
     animation: pulse-glow 3s ease-in-out infinite;
   }
+
+  @keyframes wave-ripple-1 {
+    0%, 100% {
+      transform: scaleY(0.5);
+      opacity: 0.6;
+    }
+    50% {
+      transform: scaleY(1);
+      opacity: 0.9;
+    }
+  }
+
+  @keyframes wave-ripple-2 {
+    0%, 100% {
+      transform: scaleY(0.7);
+      opacity: 0.5;
+    }
+    50% {
+      transform: scaleY(1.2);
+      opacity: 0.85;
+    }
+  }
+
+  @keyframes wave-ripple-3 {
+    0%, 100% {
+      transform: scaleY(0.4);
+      opacity: 0.7;
+    }
+    50% {
+      transform: scaleY(0.95);
+      opacity: 0.95;
+    }
+  }
+
+  @keyframes wave-ripple-4 {
+    0%, 100% {
+      transform: scaleY(0.6);
+      opacity: 0.55;
+    }
+    50% {
+      transform: scaleY(1.1);
+      opacity: 0.9;
+    }
+  }
+
+  @keyframes wave-ripple-5 {
+    0%, 100% {
+      transform: scaleY(0.5);
+      opacity: 0.65;
+    }
+    50% {
+      transform: scaleY(1);
+      opacity: 0.88;
+    }
+  }
+
+  .animate-wave-ripple-1 {
+    animation: wave-ripple-1 1.8s ease-in-out infinite;
+  }
+
+  .animate-wave-ripple-2 {
+    animation: wave-ripple-2 1.6s ease-in-out infinite;
+    animation-delay: 0.2s;
+  }
+
+  .animate-wave-ripple-3 {
+    animation: wave-ripple-3 2s ease-in-out infinite;
+    animation-delay: 0.4s;
+  }
+
+  .animate-wave-ripple-4 {
+    animation: wave-ripple-4 1.7s ease-in-out infinite;
+    animation-delay: 0.1s;
+  }
+
+  .animate-wave-ripple-5 {
+    animation: wave-ripple-5 1.9s ease-in-out infinite;
+    animation-delay: 0.3s;
+  }
+
+  @keyframes title-glow {
+    0%, 100% {
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+                   0 0 20px rgba(192, 132, 252, 0.6),
+                   0 0 30px rgba(147, 51, 234, 0.4);
+      opacity: 0.95;
+    }
+    50% {
+      text-shadow: 0 0 15px rgba(255, 255, 255, 1),
+                   0 0 30px rgba(192, 132, 252, 0.8),
+                   0 0 45px rgba(147, 51, 234, 0.6);
+      opacity: 1;
+    }
+  }
+
+  .animate-title-glow {
+    animation: title-glow 3s ease-in-out infinite;
+  }
 }
