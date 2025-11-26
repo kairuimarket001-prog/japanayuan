@@ -1,7 +1,7 @@
 const WaveRipple = ({ side, index }: { side: 'left' | 'right'; index: number }) => {
-  const heights = [40, 56, 48, 64, 52];
+  const heights = [16, 20, 18, 24, 20];
   const animationClass = `animate-wave-ripple-${index + 1}`;
-  const xOffset = side === 'left' ? -80 - (index * 8) : 80 + (index * 8);
+  const xOffset = side === 'left' ? -80 - (index * 18) : 80 + (index * 18);
 
   return (
     <div
