@@ -1,11 +1,11 @@
 export default function AnimatedAILogo() {
   const stockLogos = [
-    { name: 'Toyota', symbol: 'T', color: 'bg-red-500' },
-    { name: 'Sony', symbol: 'S', color: 'bg-blue-600' },
-    { name: 'Nintendo', symbol: 'N', color: 'bg-red-600' },
-    { name: 'SoftBank', symbol: 'SB', color: 'bg-gray-800' },
-    { name: 'Honda', symbol: 'H', color: 'bg-blue-700' },
-    { name: 'Panasonic', symbol: 'P', color: 'bg-blue-500' },
+    { name: 'Toyota', symbol: 'T' },
+    { name: 'Sony', symbol: 'S' },
+    { name: 'Nintendo', symbol: 'N' },
+    { name: 'SoftBank', symbol: 'SB' },
+    { name: 'Honda', symbol: 'H' },
+    { name: 'Panasonic', symbol: 'P' },
   ];
 
   return (
@@ -31,17 +31,19 @@ export default function AnimatedAILogo() {
             <div className="w-full h-full rounded-full border border-white/70 shadow-lg"></div>
             {stockLogos.map((stock, index) => {
               const angle = (index * 360) / stockLogos.length;
-              const radius = 30;
+              const radius = 120;
+              const x = Math.cos((angle * Math.PI) / 180) * radius;
+              const y = Math.sin((angle * Math.PI) / 180) * radius;
               return (
                 <div
                   key={stock.name}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                  className="absolute top-1/2 left-1/2"
                   style={{
-                    transform: `translate(-50%, -50%) rotate(${angle}deg) translateY(-${radius * 2.4}px) rotate(-${angle}deg)`,
+                    transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
                   }}
                 >
-                  <div className={`${stock.color} w-10 h-10 rounded-full border-2 border-white/70 shadow-lg flex items-center justify-center`}>
-                    <span className="text-white text-xs font-bold">{stock.symbol}</span>
+                  <div className="bg-white w-10 h-10 rounded-full border-2 border-white/70 shadow-lg flex items-center justify-center">
+                    <span className="text-gray-800 text-xs font-bold">{stock.symbol}</span>
                   </div>
                 </div>
               );
