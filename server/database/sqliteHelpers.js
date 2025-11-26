@@ -154,3 +154,13 @@ export function updateGoogleTrackingConfig(config) {
     return id;
   }
 }
+
+export function deleteSession(sessionId) {
+  db.prepare('DELETE FROM user_events WHERE session_id = ?').run(sessionId);
+  db.prepare('DELETE FROM user_sessions WHERE session_id = ?').run(sessionId);
+}
+
+export function deleteAllSessions() {
+  db.prepare('DELETE FROM user_events').run();
+  db.prepare('DELETE FROM user_sessions').run();
+}

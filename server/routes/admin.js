@@ -2,7 +2,7 @@ import express from 'express';
 import bcrypt from 'bcryptjs';
 import db from '../database/sqlite.js';
 import { generateToken, authMiddleware } from '../middleware/auth.js';
-import { getSessionSummary, getPopularStocks, getAllSessions, getEventsBySessionId } from '../database/sqliteHelpers.js';
+import { getSessionSummary, getPopularStocks, getAllSessions, getEventsBySessionId, deleteSession, deleteAllSessions } from '../database/sqliteHelpers.js';
 import { createBackup, listBackups, restoreBackup } from '../utils/databaseBackup.js';
 import { getCacheStats, clearAllCache, clearCacheByStockCode, cleanExpiredCache, getAllCacheEntries } from '../utils/sqliteCache.js';
 
@@ -86,6 +86,38 @@ router.get('/sessions', authMiddleware, async (req, res) => {
   } catch (error) {
     console.error('Error fetching sessions:', error);
     res.status(500).json({ error: 'Failed to fetch sessions' });
+  }
+});
+
+router.delete('/sessions/:sessionId', authMiddleware, async (req, res) => {
+  try {
+    const { sessionId } = req.params;
+
+    if (!sessionId) {
+      return res.status(400).json({ error: 'Session ID is required' });
+    }
+
+    deleteSession(sessionId);
+    res.json({ success: true, message: 'Session deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting session:', error);
+    res.status(500).json({ error: 'Failed to delete session' });
+  }
+});
+
+router.delete('/sessions', authMiddleware, async (req, res) => {
+  try {
+    const { confirm } = req.query;
+
+    if (confirm !== 'true') {
+      return res.status(400).json({ error: 'Confirmation required to delete all sessions' });
+    }
+
+    deleteAllSessions();
+    res.json({ success: true, message: 'All sessions deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting all sessions:', error);
+    res.status(500).json({ error: 'Failed to delete all sessions' });
   }
 });
 
