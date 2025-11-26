@@ -36,26 +36,31 @@ export default function SpecifiedCommercialTransactionAct() {
                   <dl className="space-y-3">
                     <div className="grid sm:grid-cols-3 gap-2">
                       <dt className="font-semibold text-gray-900">会社名</dt>
-                      <dd className="sm:col-span-2 text-gray-700">株式会社アドバンティ</dd>
-                    </div>
-                    <div className="grid sm:grid-cols-3 gap-2">
-                      <dt className="font-semibold text-gray-900">会社名（英語）</dt>
-                      <dd className="sm:col-span-2 text-gray-700">Advanti Co., Ltd.</dd>
+                      <dd className="sm:col-span-2 text-gray-700">アビクト北日本</dd>
                     </div>
                     <div className="grid sm:grid-cols-3 gap-2">
                       <dt className="font-semibold text-gray-900">所在地</dt>
                       <dd className="sm:col-span-2 text-gray-700">
-                        〒108-0014<br />
-                        東京都港区芝5-31-19 港ビル8階
+                        〒003-0002<br />
+                        北海道札幌市白石区東札幌２条６丁目４－１８－３０１
                       </dd>
                     </div>
                     <div className="grid sm:grid-cols-3 gap-2">
-                      <dt className="font-semibold text-gray-900">設立</dt>
-                      <dd className="sm:col-span-2 text-gray-700">2015年9月</dd>
+                      <dt className="font-semibold text-gray-900">電話番号</dt>
+                      <dd className="sm:col-span-2 text-gray-700">011-833-4945</dd>
                     </div>
                     <div className="grid sm:grid-cols-3 gap-2">
-                      <dt className="font-semibold text-gray-900">業種</dt>
-                      <dd className="sm:col-span-2 text-gray-700">デジタルマーケティング／広告運用／データ分析</dd>
+                      <dt className="font-semibold text-gray-900">受付時間</dt>
+                      <dd className="sm:col-span-2 text-gray-700">平日 9:00〜18:00（土日祝日を除く）</dd>
+                    </div>
+                    <div className="grid sm:grid-cols-3 gap-2">
+                      <dt className="font-semibold text-gray-900">事業内容</dt>
+                      <dd className="sm:col-span-2 text-gray-700">
+                        ・企業評価支援ツールの開発・提供<br />
+                        ・ビジネスコンサルティングサービス<br />
+                        ・財務分析ツールの開発<br />
+                        ・Webアプリケーションの開発
+                      </dd>
                     </div>
                   </dl>
                 </div>
@@ -72,11 +77,11 @@ export default function SpecifiedCommercialTransactionAct() {
                   <dl className="space-y-3">
                     <div className="grid sm:grid-cols-3 gap-2">
                       <dt className="font-semibold text-gray-900">メールアドレス</dt>
-                      <dd className="sm:col-span-2 text-blue-600">support@ziustock.com</dd>
+                      <dd className="sm:col-span-2 text-blue-600">support@valuepal.jp</dd>
                     </div>
                     <div className="grid sm:grid-cols-3 gap-2">
                       <dt className="font-semibold text-gray-900">受付時間</dt>
-                      <dd className="sm:col-span-2 text-gray-700">24時間受付（返信は営業日内）</dd>
+                      <dd className="sm:col-span-2 text-gray-700">お問い合わせは24時間受付（回答は営業時間内）</dd>
                     </div>
                   </dl>
                 </div>
@@ -241,8 +246,8 @@ export default function SpecifiedCommercialTransactionAct() {
                   <Mail className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
                   <div>
                     <p className="font-semibold text-gray-900 mb-1">メール</p>
-                    <p className="text-blue-600">support@ziustock.com</p>
-                    <p className="text-sm text-gray-600 mt-1">24時間受付（返信は営業日内）</p>
+                    <p className="text-blue-600">support@valuepal.jp</p>
+                    <p className="text-sm text-gray-600 mt-1">お問い合わせは24時間受付（回答は営業時間内）</p>
                   </div>
                 </div>
                 <Link
