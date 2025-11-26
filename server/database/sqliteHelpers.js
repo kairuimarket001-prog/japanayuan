@@ -9,9 +9,22 @@ export function getSessionSummary(daysBack = 7) {
   const totalSessions = db.prepare('SELECT COUNT(*) as count FROM user_sessions WHERE first_visit_at >= ?').get(cutoff).count;
   const convertedSessions = db.prepare('SELECT COUNT(*) as count FROM user_sessions WHERE first_visit_at >= ? AND converted = 1').get(cutoff).count;
   const totalEvents = db.prepare('SELECT COUNT(*) as count FROM user_events WHERE created_at >= ?').get(cutoff).count;
+
+  const pageLoads = db.prepare('SELECT COUNT(*) as count FROM user_events WHERE created_at >= ? AND event_type = ?').get(cutoff, 'page_load').count;
+  const diagnoses = db.prepare('SELECT COUNT(*) as count FROM user_events WHERE created_at >= ? AND event_type = ?').get(cutoff, 'diagnosis_click').count;
+  const reportDownloads = db.prepare('SELECT COUNT(*) as count FROM user_events WHERE created_at >= ? AND event_type = ?').get(cutoff, 'report_download').count;
+
   const conversionRate = totalSessions > 0 ? (convertedSessions / totalSessions) * 100 : 0;
 
-  return { totalSessions, convertedSessions, totalEvents, conversionRate: parseFloat(conversionRate.toFixed(2)) };
+  return {
+    total_sessions: totalSessions,
+    total_events: totalEvents,
+    page_loads: pageLoads,
+    diagnoses: diagnoses,
+    conversions: convertedSessions,
+    conversion_rate: parseFloat(conversionRate.toFixed(2)),
+    report_downloads: reportDownloads
+  };
 }
 
 export function getPopularStocks(daysBack = 7, limit = 10) {
