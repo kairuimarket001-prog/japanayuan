@@ -42,7 +42,7 @@ export default function AnimatedAILogo() {
                     transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
                   }}
                 >
-                  <div className="bg-transparent w-10 h-10 rounded-full border-2 border-white/70 shadow-lg flex items-center justify-center backdrop-blur-sm">
+                  <div className="bg-transparent w-10 h-10 rounded-full border-2 border-white/70 shadow-lg flex items-center justify-center backdrop-blur-sm animate-pulse">
                     <span className="text-white text-xs font-bold drop-shadow-lg">{stock.symbol}</span>
                   </div>
                 </div>
@@ -52,7 +52,7 @@ export default function AnimatedAILogo() {
         </div>
 
         <div className="absolute inset-0 flex items-center justify-center animate-spin-fast">
-          <div className="w-80 h-80 rounded-full border border-white/50 shadow-lg"></div>
+          <div className="w-80 h-80 rounded-full border border-white/30 shadow-lg"></div>
         </div>
       </div>
     </div>

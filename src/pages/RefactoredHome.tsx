@@ -446,29 +446,29 @@ export default function RefactoredHome() {
       <ModernGradientBackground />
 
       <div className="relative z-10 flex-1 flex flex-col">
-        <ApiStatsDisplay />
+        <div className="fixed top-0 left-0 right-0 z-50 overflow-hidden bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-500 py-3 shadow-xl">
+          <div className="animate-scroll-left whitespace-nowrap inline-block">
+            {[...diagnosisRecords, ...diagnosisRecords, ...diagnosisRecords].map((record, index) => (
+              <span key={index} className="inline-flex items-center mx-4 text-gray-900">
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gray-900/20 mr-2 text-sm shadow-sm">
+                  {record.icon}
+                </span>
+                <span className="text-sm font-semibold mr-2 text-gray-900">{record.time}</span>
+                <span className="text-sm font-bold mr-2 text-gray-900">{record.stock}</span>
+                <span className="text-xs bg-gray-900/20 px-2.5 py-1 rounded-full font-medium shadow-sm backdrop-blur-sm text-gray-900">無料レポート取得</span>
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="pt-12">
+          <ApiStatsDisplay />
+        </div>
 
         {!showLoadingScene ? (
           <div className="flex-1 flex flex-col">
             <div className="flex-[6] flex flex-col items-center justify-center px-4 py-8">
               <AnimatedAILogo />
-            </div>
-
-            <div className="w-[95%] mx-auto mb-4">
-              <div className="overflow-hidden bg-gradient-to-r from-ocean-600 via-ocean-500 to-teal-600 py-3 shadow-xl rounded-xl border border-ocean-400/30">
-                <div className="animate-scroll-left whitespace-nowrap inline-block">
-                  {[...diagnosisRecords, ...diagnosisRecords, ...diagnosisRecords].map((record, index) => (
-                    <span key={index} className="inline-flex items-center mx-4 text-white drop-shadow-sm">
-                      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white/30 mr-2 text-sm shadow-sm">
-                        {record.icon}
-                      </span>
-                      <span className="text-sm font-semibold mr-2 text-amber-300">{record.time}</span>
-                      <span className="text-sm font-bold mr-2 text-white">{record.stock}</span>
-                      <span className="text-xs bg-white/25 px-2.5 py-1 rounded-full font-medium shadow-sm backdrop-blur-sm">無料レポート取得</span>
-                    </span>
-                  ))}
-                </div>
-              </div>
             </div>
 
             <div className="flex-[4] flex flex-col justify-end">
