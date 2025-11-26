@@ -9,13 +9,13 @@ export default function RocketAnimation() {
       >
         <defs>
           <linearGradient id="rocketBodyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#38bdf8" />
-            <stop offset="50%" stopColor="#0ea5e9" />
-            <stop offset="100%" stopColor="#0284c7" />
+            <stop offset="0%" stopColor="#a855f7" />
+            <stop offset="50%" stopColor="#9333ea" />
+            <stop offset="100%" stopColor="#7e22ce" />
           </linearGradient>
           <linearGradient id="rocketWindowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#f0f9ff" />
-            <stop offset="100%" stopColor="#7dd3fc" />
+            <stop offset="0%" stopColor="#f3e8ff" />
+            <stop offset="100%" stopColor="#c084fc" />
           </linearGradient>
           <linearGradient id="flameGradient" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop offset="0%" stopColor="#fcd34d" />
@@ -25,16 +25,16 @@ export default function RocketAnimation() {
         </defs>
 
         <g className="rocket-main">
-          <path d="M 100 30 L 85 60 L 85 130 L 115 130 L 115 60 Z" fill="url(#rocketBodyGradient)" stroke="#bae6fd" strokeWidth="2" />
+          <path d="M 100 30 L 85 60 L 85 130 L 115 130 L 115 60 Z" fill="url(#rocketBodyGradient)" stroke="#e9d5ff" strokeWidth="2" />
 
-          <ellipse cx="100" cy="30" rx="15" ry="20" fill="#5eead4" stroke="#bae6fd" strokeWidth="2" />
+          <ellipse cx="100" cy="30" rx="15" ry="20" fill="#c084fc" stroke="#e9d5ff" strokeWidth="2" />
 
-          <circle cx="100" cy="80" r="12" fill="url(#rocketWindowGradient)" stroke="#0ea5e9" strokeWidth="2">
+          <circle cx="100" cy="80" r="12" fill="url(#rocketWindowGradient)" stroke="#9333ea" strokeWidth="2">
             <animate attributeName="opacity" values="1;0.7;1" dur="2s" repeatCount="indefinite" />
           </circle>
 
-          <path d="M 70 100 L 85 100 L 85 140 Z" fill="#14b8a6" stroke="#bae6fd" strokeWidth="2" />
-          <path d="M 130 100 L 115 100 L 115 140 Z" fill="#14b8a6" stroke="#bae6fd" strokeWidth="2" />
+          <path d="M 70 100 L 85 100 L 85 140 Z" fill="#a855f7" stroke="#e9d5ff" strokeWidth="2" />
+          <path d="M 130 100 L 115 100 L 115 140 Z" fill="#a855f7" stroke="#e9d5ff" strokeWidth="2" />
 
           <rect x="92" y="100" width="5" height="15" rx="1" fill="#fcd34d" opacity="0.8" />
           <rect x="103" y="100" width="5" height="15" rx="1" fill="#fcd34d" opacity="0.8" />
