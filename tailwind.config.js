@@ -82,6 +82,7 @@ export default {
         'spin-medium': 'spin 5s linear infinite',
         'spin-fast': 'spin 3s linear infinite',
         'breathe': 'breathe 3s ease-in-out infinite',
+        'shine': 'shine 2.5s ease-in-out infinite',
       },
       keyframes: {
         'pulse-ocean': {
@@ -99,6 +100,11 @@ export default {
         'breathe': {
           '0%, 100%': { transform: 'scale(1)', opacity: 1 },
           '50%': { transform: 'scale(1.08)', opacity: 0.95 },
+        },
+        'shine': {
+          '0%': { transform: 'translateX(-100%) translateY(-100%) rotate(30deg)' },
+          '50%': { transform: 'translateX(100%) translateY(100%) rotate(30deg)' },
+          '100%': { transform: 'translateX(100%) translateY(100%) rotate(30deg)' },
         },
       },
       fontFamily: {
