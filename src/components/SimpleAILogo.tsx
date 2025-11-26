@@ -42,7 +42,7 @@ const GlowRing = ({ scale, delay }: { scale: number; delay: number }) => {
 
 export default function SimpleAILogo() {
   return (
-    <div className="flex flex-col items-center justify-center w-full h-full gap-8 relative overflow-hidden">
+    <div className="flex flex-col items-center justify-center w-full h-full gap-4 relative overflow-hidden">
       <h1
         className="text-4xl font-bold bg-gradient-to-r from-white via-purple-100 to-white bg-clip-text text-transparent select-none animate-title-glow relative z-20"
         style={{
