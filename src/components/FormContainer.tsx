@@ -15,10 +15,10 @@ export default function FormContainer({ children }: FormContainerProps) {
       >
         <div className="max-w-md mx-auto">
           <div className="mb-6">
-            <h2 className="text-2xl font-bold text-gray-900 text-center mb-2">
+            <h2 className="text-2xl font-bold text-white text-center mb-2">
               早速始めましょう
             </h2>
-            <p className="text-sm text-gray-500 text-center">
+            <p className="text-sm text-gray-300 text-center">
               銘柄コードまたは銘柄名を入力してください
             </p>
           </div>
