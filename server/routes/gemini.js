@@ -93,7 +93,10 @@ PBR: ${stockData.pbr}倍
 
 メッセージを送信した瞬間にAI診断が始まり、最新レポートが即座に届きます。
 
-重要: このフォーマットを厳密に守り、【注目話題】セクションには必ず15-20字の魅力的なフレーズを含めてください。他の分析内容は含めないでください。`;
+【厳格な終了ルール】
+1. 上記の「メッセージを送信した瞬間にAI診断が始まり、最新レポートが即座に届きます。」という文章で必ず終了してください。
+2. この文章の後に、いかなる追加のテキスト、説明、注釈も出力しないでください。
+3. 【注目話題】セクションには15-20字の魅力的なフレーズを含めてください。`;
     } else {
       prompt = `あなたは日本の株式市場アナリストです。ユーザーが入力したコード「${code}」について診断を行います。
 
@@ -115,7 +118,7 @@ PBR: ${stockData.pbr}倍
     res.setHeader('Connection', 'keep-alive');
 
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 45000);
+    const timeoutId = setTimeout(() => controller.abort(), 60000);
 
     let siliconflowResponse;
     try {
@@ -135,12 +138,14 @@ PBR: ${stockData.pbr}倍
                 content: prompt,
               },
             ],
-            temperature: 0.7,
-            max_tokens: 1500,
+            temperature: 0.6,
+            max_tokens: 2000,
             top_p: 0.7,
             top_k: 50,
-            frequency_penalty: 0.5,
+            frequency_penalty: 0.2,
+            n: 1,
             stream: true,
+            stop: ["\n\n【", "\n\n重要", "\n\n---"],
           }),
           signal: controller.signal,
         }
@@ -149,7 +154,7 @@ PBR: ${stockData.pbr}倍
     } catch (fetchError) {
       clearTimeout(timeoutId);
       if (fetchError.name === 'AbortError') {
-        console.error('Request timeout after 45 seconds');
+        console.error('Request timeout after 60 seconds');
         const responseTime = Date.now() - startTime;
         await recordUsageStats({ cacheHit: false, apiCall: true, error: true, responseTime });
         res.write(`data: ${JSON.stringify({ error: 'リクエストがタイムアウトしました。もう一度お試しください。' })}\n\n`);
