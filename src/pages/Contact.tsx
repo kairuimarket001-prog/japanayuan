@@ -163,32 +163,23 @@ export default function Contact() {
                 運営会社情報
               </h3>
               <p className="text-sm text-gray-700 mb-2">
-                <strong>会社名:</strong> アビクト北日本
+                <strong>会社名:</strong> 株式会社アドバンティ（Advanti Co., Ltd.）
               </p>
               <p className="text-sm text-gray-700 mb-2">
-                <strong>所在地:</strong> 〒003-0002 北海道札幌市白石区東札幌２条６丁目４－１８－３０１
+                <strong>所在地:</strong> 〒108-0014 東京都港区芝5-31-19 港ビル8階
               </p>
               <p className="text-sm text-gray-700 mb-2">
-                <strong>電話番号:</strong> 011-833-4945
+                <strong>設立:</strong> 2015年9月
               </p>
               <p className="text-sm text-gray-700 mb-2">
-                <strong>受付時間:</strong> 平日 9:00〜18:00（土日祝日を除く）
+                <strong>業種:</strong> デジタルマーケティング／広告運用／データ分析
               </p>
               <p className="text-sm text-gray-700 mb-2">
-                <strong>メールアドレス:</strong> support@valuepal.jp
+                <strong>メールアドレス:</strong> support@ziustock.com
               </p>
               <p className="text-sm text-gray-700">
-                <strong>お問い合わせ受付:</strong> 24時間受付（回答は営業時間内）
+                <strong>受付時間:</strong> 24時間受付（返信は営業日内）
               </p>
-              <p className="text-sm text-gray-700 mt-4">
-                <strong>事業内容:</strong>
-              </p>
-              <ul className="text-sm text-gray-700 ml-5 list-disc">
-                <li>企業評価支援ツールの開発・提供</li>
-                <li>ビジネスコンサルティングサービス</li>
-                <li>財務分析ツールの開発</li>
-                <li>Webアプリケーションの開発</li>
-              </ul>
             </div>
           </div>
         </div>

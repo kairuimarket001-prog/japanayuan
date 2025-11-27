@@ -24,7 +24,8 @@ export default function CompanyInfo() {
           <div className="prose max-w-none">
             <section className="mb-8">
               <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg p-6 border-l-4 border-blue-500">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">アビクト北日本</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">株式会社アドバンティ</h2>
+                <p className="text-lg text-gray-700 mb-2">Advanti Co., Ltd.</p>
               </div>
             </section>
 
@@ -36,8 +37,9 @@ export default function CompanyInfo() {
                     <div>
                       <h3 className="font-bold text-gray-900 mb-2">所在地</h3>
                       <p className="text-gray-700 leading-relaxed">
-                        〒003-0002<br />
-                        北海道札幌市白石区東札幌２条６丁目４－１８－３０１
+                        〒108-0014<br />
+                        東京都港区芝5-31-19<br />
+                        港ビル8階
                       </p>
                     </div>
                   </div>
@@ -47,9 +49,8 @@ export default function CompanyInfo() {
                   <div className="flex items-start gap-3 mb-3">
                     <Calendar className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="font-bold text-gray-900 mb-2">電話番号</h3>
-                      <p className="text-gray-700 text-lg">011-833-4945</p>
-                      <p className="text-sm text-gray-600 mt-1">受付時間：平日 9:00〜18:00（土日祝日を除く）</p>
+                      <h3 className="font-bold text-gray-900 mb-2">設立</h3>
+                      <p className="text-gray-700 text-lg">2015年9月</p>
                     </div>
                   </div>
                 </div>
@@ -61,12 +62,9 @@ export default function CompanyInfo() {
                 <div className="flex items-start gap-3">
                   <Briefcase className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">メールアドレス</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">業種</h3>
                     <p className="text-gray-700 text-lg leading-relaxed">
-                      support@valuepal.jp
-                    </p>
-                    <p className="text-sm text-gray-600 mt-2">
-                      お問い合わせは24時間受付（回答は営業時間内）
+                      デジタルマーケティング／広告運用／データ分析
                     </p>
                   </div>
                 </div>
@@ -83,33 +81,68 @@ export default function CompanyInfo() {
                 <div className="bg-white border-2 border-blue-100 rounded-lg p-5 hover:border-blue-300 transition-colors">
                   <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
                     <span className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">1</span>
-                    企業評価支援ツールの開発・提供
+                    広告戦略・ブランド戦略コンサルティング
                   </h4>
+                  <p className="text-gray-700 text-sm leading-relaxed ml-10">
+                    企業のビジネス目標に合わせた広告戦略とブランディング戦略を立案します
+                  </p>
                 </div>
 
                 <div className="bg-white border-2 border-blue-100 rounded-lg p-5 hover:border-blue-300 transition-colors">
                   <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
                     <span className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">2</span>
-                    ビジネスコンサルティングサービス
+                    Google Ads、Facebook、YouTube等のクロスチャネル広告運用・最適化
                   </h4>
+                  <p className="text-gray-700 text-sm leading-relaxed ml-10">
+                    複数の広告プラットフォームを統合的に運用し、最大の効果を引き出します
+                  </p>
                 </div>
 
                 <div className="bg-white border-2 border-blue-100 rounded-lg p-5 hover:border-blue-300 transition-colors">
                   <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
                     <span className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">3</span>
-                    財務分析ツールの開発
+                    広告効果測定、データ分析、報告書作成
                   </h4>
+                  <p className="text-gray-700 text-sm leading-relaxed ml-10">
+                    詳細なデータ分析とわかりやすい報告書で広告効果を可視化します
+                  </p>
                 </div>
 
                 <div className="bg-white border-2 border-blue-100 rounded-lg p-5 hover:border-blue-300 transition-colors">
                   <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
                     <span className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">4</span>
-                    Webアプリケーションの開発
+                    データ駆動型広告戦略と効果的な広告投資の支援
                   </h4>
+                  <p className="text-gray-700 text-sm leading-relaxed ml-10">
+                    データ分析に基づき、ROIを最大化する広告投資をサポートします
+                  </p>
+                </div>
+
+                <div className="bg-white border-2 border-blue-100 rounded-lg p-5 hover:border-blue-300 transition-colors">
+                  <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
+                    <span className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">5</span>
+                    広告効果追跡ツール、プラットフォーム提供
+                  </h4>
+                  <p className="text-gray-700 text-sm leading-relaxed ml-10">
+                    広告効果をリアルタイムで追跡できるツールとプラットフォームを提供します
+                  </p>
                 </div>
               </div>
             </section>
 
+            <section className="mb-8">
+              <div className="bg-gradient-to-r from-slate-100 to-slate-50 rounded-lg p-6 border border-slate-200">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">企業理念</h3>
+                <p className="text-gray-700 leading-relaxed mb-3">
+                  株式会社アドバンティは、データ駆動型のデジタルマーケティングソリューションを提供することで、
+                  企業の広告成果を最大化することを使命としています。
+                </p>
+                <p className="text-gray-700 leading-relaxed">
+                  クロスチャネル広告運用、データ分析、効果測定など、
+                  包括的な広告ソリューションを通じて、お客様のビジネス成長を強力にサポートします。
+                </p>
+              </div>
+            </section>
 
             <div className="bg-blue-50 rounded-lg p-6 border-2 border-blue-200 mt-8">
               <h3 className="font-bold text-gray-900 mb-3">お問い合わせ</h3>
