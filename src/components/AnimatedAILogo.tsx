@@ -67,8 +67,9 @@ export default function AnimatedAILogo() {
           <div className="w-44 h-44 rounded-full border border-white/90 shadow-lg"></div>
         </div>
 
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="relative w-60 h-60 animate-orbit">
+        <div className="absolute inset-0 flex items-center justify-center animate-spin-medium" style={{ animationDirection: 'reverse' }}>
+          <div className="relative w-60 h-60">
+            <div className="w-full h-full rounded-full border border-white/70 shadow-lg"></div>
             {stockLogos.map((stock, index) => {
               const angle = (index * 360) / stockLogos.length;
               const radius = 120;
@@ -82,11 +83,8 @@ export default function AnimatedAILogo() {
                     transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
                   }}
                 >
-                  <div className="bg-white/95 w-14 h-14 rounded-full shadow-xl flex items-center justify-center backdrop-blur-sm hover:scale-110 transition-transform duration-300 animate-float-subtle border-2 border-white/50" style={{
-                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15), 0 0 30px rgba(255, 255, 255, 0.3)',
-                    animationDelay: `${index * 0.5}s`
-                  }}>
-                    <div className="text-gray-800 animate-orbit-reverse">
+                  <div className="bg-white/90 w-12 h-12 rounded-full shadow-lg flex items-center justify-center backdrop-blur-sm animate-pulse">
+                    <div className="text-gray-800 animate-spin-slow">
                       <stock.component />
                     </div>
                   </div>

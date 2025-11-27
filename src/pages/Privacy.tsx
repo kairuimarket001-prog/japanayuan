@@ -149,7 +149,7 @@ export default function Privacy() {
                 設立: 2015年9月
               </p>
               <p className="text-sm text-gray-700 mb-2">
-                メール: support@ziustock.com
+                メール: support@ostosk.jp
               </p>
               <p className="text-sm text-gray-700">
                 受付時間: 24時間受付（返信は営業日内）

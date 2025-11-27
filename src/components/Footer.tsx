@@ -138,7 +138,7 @@ export default function Footer() {
                 </li>
                 <li className="flex items-center gap-1 text-white drop-shadow-lg">
                   <Mail className="w-3 h-3" />
-                  <span>support@ziustock.com</span>
+                  <span>support@ostosk.jp</span>
                 </li>
                 <li className="text-white/80 drop-shadow-lg text-xs">
                   受付時間: 24時間受付（返信は営業日内）
@@ -150,13 +150,19 @@ export default function Footer() {
           {/* Copyright Section */}
           <div className="border-t border-white/30 pt-4 text-center">
             <p className="text-xs sm:text-sm text-white drop-shadow-lg mb-2 font-medium">
-              &copy; {currentYear} ziustock.com. All rights reserved.
+              &copy; {currentYear} 株式会社アドバンティ (Advanti Co., Ltd.). All rights reserved.
             </p>
-            <p className="text-[10px] sm:text-xs text-white/90 drop-shadow-lg leading-relaxed max-w-3xl mx-auto">
+            <p className="text-[10px] sm:text-xs text-white/90 drop-shadow-lg leading-relaxed max-w-3xl mx-auto mb-4">
               当サイトで提供される情報は投資勧誘を目的としたものではありません。
               投資に関する最終決定は、利用者ご自身の判断でなさるようお願いいたします。
               掲載されている情報の正確性については万全を期しておりますが、その内容の正確性、安全性、有用性を保証するものではありません。
             </p>
+
+            {/* Service Information */}
+            <div className="text-[10px] sm:text-xs text-white/80 drop-shadow-lg space-y-1">
+              <p>株式会社アドバンティ（Advanti Co., Ltd.）</p>
+              <p>〒108-0014 東京都港区芝5-31-19 港ビル8階</p>
+            </div>
           </div>
         </div>
       </div>

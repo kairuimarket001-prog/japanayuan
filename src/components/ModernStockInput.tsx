@@ -6,10 +6,9 @@ interface ModernStockInputProps {
   value: string;
   onChange: (value: string) => void;
   onStockSelect?: (code: string, name: string) => void;
-  disableAutoDropdown?: boolean;
 }
 
-export default function ModernStockInput({ value, onChange, onStockSelect, disableAutoDropdown = false }: ModernStockInputProps) {
+export default function ModernStockInput({ value, onChange, onStockSelect }: ModernStockInputProps) {
   const { search, isLoading } = useStockSearch();
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -24,22 +23,14 @@ export default function ModernStockInput({ value, onChange, onStockSelect, disab
     if (value.trim().length > 0) {
       const results = search(value);
       setSearchResults(results);
-
-      const isFullyFormatted = /^\d{4}\s+.+/.test(value);
-
-      if (disableAutoDropdown || isFullyFormatted) {
-        setShowDropdown(false);
-      } else {
-        setShowDropdown(results.length > 0);
-      }
-
+      setShowDropdown(results.length > 0);
       setCurrentPage(0);
     } else {
       setSearchResults([]);
       setShowDropdown(false);
       setCurrentPage(0);
     }
-  }, [value, search, disableAutoDropdown]);
+  }, [value, search]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
