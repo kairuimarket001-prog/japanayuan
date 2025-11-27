@@ -53,13 +53,13 @@ export default function AnalysisRenderer({ text }: AnalysisRendererProps) {
       {parsedLines.map((line, index) => {
         if (line.type === 'bold') {
           return (
-            <div key={index} className="font-bold text-blue-900 mt-4 mb-2">
+            <div key={index} className="font-bold text-white mt-4 mb-2">
               {line.content}
             </div>
           );
         }
         return (
-          <div key={index} className="text-gray-700">
+          <div key={index} className="text-gray-300">
             {line.content}
           </div>
         );

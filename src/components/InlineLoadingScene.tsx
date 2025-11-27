@@ -1,5 +1,4 @@
-import AstronautAnimation from './AstronautAnimation';
-import RocketAnimation from './RocketAnimation';
+import AnimatedCatRobot from './AnimatedCatRobot';
 import LoadingProgressBars from './LoadingProgressBars';
 
 interface InlineLoadingSceneProps {
@@ -20,9 +19,8 @@ export default function InlineLoadingScene({ isVisible }: InlineLoadingSceneProp
         </p>
       </div>
 
-      <div className="flex items-center justify-center gap-8 mb-8">
-        <AstronautAnimation />
-        <RocketAnimation />
+      <div className="flex items-center justify-center mb-8">
+        <AnimatedCatRobot />
       </div>
 
       <div className="max-w-md mx-auto">

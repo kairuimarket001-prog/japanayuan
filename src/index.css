@@ -31,26 +31,12 @@
   }
 
   * {
-    scrollbar-width: thin;
-    scrollbar-color: #9333ea #e9d5ff;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
   *::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-
-  *::-webkit-scrollbar-track {
-    background: #e9d5ff;
-  }
-
-  *::-webkit-scrollbar-thumb {
-    background: #9333ea;
-    border-radius: 4px;
-  }
-
-  *::-webkit-scrollbar-thumb:hover {
-    background: #7e22ce;
+    display: none;
   }
 
   body[data-modal-open] header,

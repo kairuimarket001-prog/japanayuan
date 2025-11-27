@@ -67,9 +67,9 @@ export default function LoadingProgressBars({ isVisible }: LoadingProgressBarsPr
   }, [isVisible]);
 
   const stages = [
-    { label: 'データ収集中', progress: stage1, color: '#9333ea' },
-    { label: 'AI分析中', progress: stage2, color: '#7e22ce' },
-    { label: 'レポート生成中', progress: stage3, color: '#6b21a8' },
+    { label: 'データ収集中', progress: stage1, color: '#ffffff' },
+    { label: 'AI分析中', progress: stage2, color: '#ffffff' },
+    { label: 'レポート生成中', progress: stage3, color: '#ffffff' },
   ];
 
   return (
@@ -80,7 +80,7 @@ export default function LoadingProgressBars({ isVisible }: LoadingProgressBarsPr
             <span className="text-sm font-semibold text-white">{stage.label}</span>
             <span className="text-xs text-gray-300">{Math.floor(stage.progress)}%</span>
           </div>
-          <div className="relative w-full h-2 bg-gray-800/50 rounded-full overflow-hidden border border-purple-500/30">
+          <div className="relative w-full h-2 bg-gray-800/50 rounded-full overflow-hidden border border-white/30">
             <div
               className="absolute top-0 left-0 h-full transition-all duration-300 ease-out rounded-full"
               style={{
