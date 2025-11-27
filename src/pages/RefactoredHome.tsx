@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
-import DreamyPurpleBackground from '../components/DreamyPurpleBackground';
-import SimpleAILogo from '../components/SimpleAILogo';
-import FormContainer from '../components/FormContainer';
+import RadialDarkBackground from '../components/RadialDarkBackground';
+import AnimatedCatRobot from '../components/AnimatedCatRobot';
+import EnhancedTitle from '../components/EnhancedTitle';
+import DisclaimerSection from '../components/DisclaimerSection';
+import SimpleInputContainer from '../components/SimpleInputContainer';
 import ModernStockInput from '../components/ModernStockInput';
 import ModernActionButton from '../components/ModernActionButton';
 import InlineLoadingScene from '../components/InlineLoadingScene';
 import DiagnosisModal from '../components/DiagnosisModal';
-import ApiStatsDisplay from '../components/ApiStatsDisplay';
 import { StockData } from '../types/stock';
 import { DiagnosisState } from '../types/diagnosis';
 import { useUrlParams } from '../hooks/useUrlParams';
@@ -454,21 +455,19 @@ export default function RefactoredHome() {
 
   return (
     <div className="min-h-screen relative flex flex-col overflow-visible">
-      <DreamyPurpleBackground />
+      <RadialDarkBackground />
 
       <div className="relative z-10 flex-1 flex flex-col overflow-visible">
-        <div className="pt-8">
-          <ApiStatsDisplay />
-        </div>
-
         {!showLoadingScene ? (
-          <div className="flex-1 flex flex-col">
-            <div className="flex-[6] flex flex-col items-center justify-center px-4 py-8">
-              <SimpleAILogo />
-            </div>
+          <div className="flex-1 flex flex-col justify-center py-12 space-y-8">
+            <AnimatedCatRobot />
 
-            <div className="flex-[4] flex flex-col justify-center pb-16">
-              <FormContainer>
+            <EnhancedTitle />
+
+            <DisclaimerSection />
+
+            <SimpleInputContainer>
+              <div className="space-y-6">
                 <ModernStockInput
                   value={inputValue}
                   onChange={setInputValue}
@@ -478,14 +477,14 @@ export default function RefactoredHome() {
 
                 {loading && (
                   <div className="text-center py-4 animate-fadeIn">
-                    <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-200 border-t-gray-900"></div>
-                    <p className="mt-2 text-gray-600 text-sm">Loading...</p>
+                    <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-200 border-t-blue-400"></div>
+                    <p className="mt-2 text-gray-300 text-sm">読み込み中...</p>
                   </div>
                 )}
 
                 {error && diagnosisState !== 'error' && (
-                  <div className="bg-red-50 border border-red-200 rounded-xl p-3 text-center animate-fadeIn mt-4">
-                    <p className="text-red-600 text-sm font-semibold">{error}</p>
+                  <div className="bg-red-900/30 border border-red-500/50 rounded-xl p-3 text-center animate-fadeIn">
+                    <p className="text-red-300 text-sm font-semibold">{error}</p>
                   </div>
                 )}
 
@@ -494,22 +493,22 @@ export default function RefactoredHome() {
                 )}
 
                 {diagnosisState === 'error' && (
-                  <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-center animate-fadeIn mt-4">
-                    <h3 className="text-lg font-bold text-red-600 mb-2">診断エラー</h3>
-                    <p className="text-red-600 text-sm mb-4 whitespace-pre-line">{error}</p>
+                  <div className="bg-red-900/30 border border-red-500/50 rounded-xl p-4 text-center animate-fadeIn">
+                    <h3 className="text-lg font-bold text-red-300 mb-2">診断エラー</h3>
+                    <p className="text-red-300 text-sm mb-4 whitespace-pre-line">{error}</p>
                     <button
                       onClick={() => {
                         setDiagnosisState('initial');
                         setError(null);
                       }}
-                      className="px-6 py-3 bg-gray-900 text-white font-bold rounded-xl transition-all shadow-lg hover:opacity-90"
+                      className="px-6 py-3 bg-blue-600 text-white font-bold rounded-xl transition-all shadow-lg hover:bg-blue-700"
                     >
                       もう一度試す
                     </button>
                   </div>
                 )}
-              </FormContainer>
-            </div>
+              </div>
+            </SimpleInputContainer>
           </div>
         ) : (
           <div className="flex-1 flex items-center justify-center">
