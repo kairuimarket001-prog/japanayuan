@@ -9,9 +9,22 @@ export function getSessionSummary(daysBack = 7) {
   const totalSessions = db.prepare('SELECT COUNT(*) as count FROM user_sessions WHERE first_visit_at >= ?').get(cutoff).count;
   const convertedSessions = db.prepare('SELECT COUNT(*) as count FROM user_sessions WHERE first_visit_at >= ? AND converted = 1').get(cutoff).count;
   const totalEvents = db.prepare('SELECT COUNT(*) as count FROM user_events WHERE created_at >= ?').get(cutoff).count;
+
+  const pageLoads = db.prepare('SELECT COUNT(*) as count FROM user_events WHERE created_at >= ? AND event_type = ?').get(cutoff, 'page_load').count;
+  const diagnoses = db.prepare('SELECT COUNT(*) as count FROM user_events WHERE created_at >= ? AND event_type = ?').get(cutoff, 'diagnosis_click').count;
+  const reportDownloads = db.prepare('SELECT COUNT(*) as count FROM user_events WHERE created_at >= ? AND event_type = ?').get(cutoff, 'report_download').count;
+
   const conversionRate = totalSessions > 0 ? (convertedSessions / totalSessions) * 100 : 0;
 
-  return { totalSessions, convertedSessions, totalEvents, conversionRate: parseFloat(conversionRate.toFixed(2)) };
+  return {
+    total_sessions: totalSessions,
+    total_events: totalEvents,
+    page_loads: pageLoads,
+    diagnoses: diagnoses,
+    conversions: convertedSessions,
+    conversion_rate: parseFloat(conversionRate.toFixed(2)),
+    report_downloads: reportDownloads
+  };
 }
 
 export function getPopularStocks(daysBack = 7, limit = 10) {
@@ -140,4 +153,14 @@ export function updateGoogleTrackingConfig(config) {
     db.prepare('INSERT INTO google_tracking_config (id, google_ads_conversion_id, ga4_measurement_id, conversion_action_id, is_enabled) VALUES (?, ?, ?, ?, ?)').run(id, config.google_ads_conversion_id || null, config.ga4_measurement_id || null, config.conversion_action_id || null, config.is_enabled ? 1 : 0);
     return id;
   }
+}
+
+export function deleteSession(sessionId) {
+  db.prepare('DELETE FROM user_events WHERE session_id = ?').run(sessionId);
+  db.prepare('DELETE FROM user_sessions WHERE session_id = ?').run(sessionId);
+}
+
+export function deleteAllSessions() {
+  db.prepare('DELETE FROM user_events').run();
+  db.prepare('DELETE FROM user_sessions').run();
 }

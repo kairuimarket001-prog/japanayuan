@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import ModernGradientBackground from '../components/ModernGradientBackground';
-import DiagnosisTicker from '../components/DiagnosisTicker';
-import AnimatedAILogo from '../components/AnimatedAILogo';
+import DreamyPurpleBackground from '../components/DreamyPurpleBackground';
+import SimpleAILogo from '../components/SimpleAILogo';
 import FormContainer from '../components/FormContainer';
 import ModernStockInput from '../components/ModernStockInput';
 import ModernActionButton from '../components/ModernActionButton';
@@ -16,18 +15,6 @@ import { userTracking } from '../lib/userTracking';
 import { trackConversion, trackDiagnosisButtonClick, trackConversionButtonClick } from '../lib/googleTracking';
 import { generateDiagnosisReport } from '../lib/reportGenerator';
 
-const diagnosisRecords = [
-  { time: '2分前', stock: 'トヨタ自動車', icon: '👨' },
-  { time: '5分前', stock: 'ソニーグループ', icon: '👩' },
-  { time: '8分前', stock: '任天堂', icon: '👨' },
-  { time: '12分前', stock: 'ソフトバンクグループ', icon: '👩' },
-  { time: '15分前', stock: 'キーエンス', icon: '👨' },
-  { time: '18分前', stock: '三菱UFJ', icon: '👩' },
-  { time: '22分前', stock: 'ファーストリテイリング', icon: '👨' },
-  { time: '25分前', stock: '東京エレクトロン', icon: '👩' },
-  { time: '28分前', stock: 'リクルート', icon: '👨' },
-  { time: '32分前', stock: 'KDDI', icon: '👩' },
-];
 
 export default function RefactoredHome() {
   const urlParams = useUrlParams();
@@ -44,15 +31,18 @@ export default function RefactoredHome() {
   const [showLoadingScene, setShowLoadingScene] = useState<boolean>(false);
   const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const isManualSelectionRef = useRef<boolean>(false);
+  const isUrlAutoSelectRef = useRef<boolean>(false);
 
   useEffect(() => {
     if (urlParams.code) {
+      isUrlAutoSelectRef.current = true;
       setStockCode(urlParams.code);
       setInputValue(urlParams.code);
-      fetchStockData(urlParams.code);
+      fetchStockData(urlParams.code, true);
     } else {
       setStockCode('');
       setInputValue('');
+      isUrlAutoSelectRef.current = false;
     }
   }, [urlParams.code]);
 
@@ -75,7 +65,7 @@ export default function RefactoredHome() {
     trackPageVisit();
   }, [stockData, stockCode, urlParams]);
 
-  const fetchStockData = async (code: string) => {
+  const fetchStockData = async (code: string, isUrlAutoSelect: boolean = false) => {
     const cleanCode = code.replace(/[^\d]/g, '');
 
     if (!cleanCode || !/^\d{4}$/.test(cleanCode)) {
@@ -95,6 +85,7 @@ export default function RefactoredHome() {
         setStockData(null);
         setStockCode(cleanCode);
         setError(null);
+        isUrlAutoSelectRef.current = false;
         return;
       }
 
@@ -102,10 +93,17 @@ export default function RefactoredHome() {
       setStockData(data);
       setStockCode(cleanCode);
       setError(null);
+
+      if (isUrlAutoSelect && data?.info?.name) {
+        const displayValue = `${cleanCode} ${data.info.name}`;
+        setInputValue(displayValue);
+        isManualSelectionRef.current = true;
+      }
     } catch (err) {
       setStockData(null);
       setStockCode(cleanCode);
       setError(null);
+      isUrlAutoSelectRef.current = false;
     } finally {
       setLoading(false);
     }
@@ -122,6 +120,10 @@ export default function RefactoredHome() {
   useEffect(() => {
     if (isManualSelectionRef.current) {
       isManualSelectionRef.current = false;
+      return;
+    }
+
+    if (isUrlAutoSelectRef.current) {
       return;
     }
 
@@ -451,41 +453,27 @@ export default function RefactoredHome() {
   };
 
   return (
-    <div className="min-h-screen relative flex flex-col">
-      <ModernGradientBackground />
+    <div className="min-h-screen relative flex flex-col overflow-visible">
+      <DreamyPurpleBackground />
 
-      <div className="relative z-10 flex-1 flex flex-col">
-        <div className="fixed top-0 left-0 right-0 z-50 overflow-hidden py-3 shadow-xl" style={{background: 'linear-gradient(to right, #ffff1e, #ffff1e, #ffea00)'}}>
-          <div className="animate-scroll-left whitespace-nowrap inline-block">
-            {[...diagnosisRecords, ...diagnosisRecords, ...diagnosisRecords].map((record, index) => (
-              <span key={index} className="inline-flex items-center mx-4 text-gray-900">
-                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gray-900/20 mr-2 text-sm shadow-sm">
-                  {record.icon}
-                </span>
-                <span className="text-sm font-semibold mr-2 text-gray-900">{record.time}</span>
-                <span className="text-sm font-bold mr-2 text-gray-900">{record.stock}</span>
-                <span className="text-xs bg-gray-900/20 px-2.5 py-1 rounded-full font-medium shadow-sm backdrop-blur-sm text-gray-900">無料レポート取得</span>
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <div className="pt-12">
+      <div className="relative z-10 flex-1 flex flex-col overflow-visible">
+        <div className="pt-8">
           <ApiStatsDisplay />
         </div>
 
         {!showLoadingScene ? (
           <div className="flex-1 flex flex-col">
             <div className="flex-[6] flex flex-col items-center justify-center px-4 py-8">
-              <AnimatedAILogo />
+              <SimpleAILogo />
             </div>
 
-            <div className="flex-[4] flex flex-col justify-end">
+            <div className="flex-[4] flex flex-col justify-center pb-16">
               <FormContainer>
                 <ModernStockInput
                   value={inputValue}
                   onChange={setInputValue}
                   onStockSelect={handleStockSelect}
+                  autoSelectFirst={isUrlAutoSelectRef.current}
                 />
 
                 {loading && (

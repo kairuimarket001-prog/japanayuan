@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useStockSearch, SearchResult } from '../hooks/useStockSearch';
 
@@ -6,9 +7,11 @@ interface ModernStockInputProps {
   value: string;
   onChange: (value: string) => void;
   onStockSelect?: (code: string, name: string) => void;
+  disableAutoDropdown?: boolean;
+  autoSelectFirst?: boolean;
 }
 
-export default function ModernStockInput({ value, onChange, onStockSelect }: ModernStockInputProps) {
+export default function ModernStockInput({ value, onChange, onStockSelect, disableAutoDropdown = false, autoSelectFirst = false }: ModernStockInputProps) {
   const { search, isLoading } = useStockSearch();
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -16,6 +19,7 @@ export default function ModernStockInput({ value, onChange, onStockSelect }: Mod
   const [dropdownPosition, setDropdownPosition] = useState({ left: 0, top: 0, width: 0 });
   const dropdownRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const hasAutoSelectedRef = useRef<boolean>(false);
 
   const ITEMS_PER_PAGE = 5;
 
@@ -23,14 +27,34 @@ export default function ModernStockInput({ value, onChange, onStockSelect }: Mod
     if (value.trim().length > 0) {
       const results = search(value);
       setSearchResults(results);
-      setShowDropdown(results.length > 0);
+
+      const isFullyFormatted = /^\d{4}\s+.+/.test(value);
+
+      if (disableAutoDropdown || isFullyFormatted) {
+        setShowDropdown(false);
+      } else {
+        setShowDropdown(results.length > 0);
+      }
+
       setCurrentPage(0);
+
+      // Auto-select first result if enabled and not already selected
+      if (autoSelectFirst && results.length > 0 && !hasAutoSelectedRef.current && !isFullyFormatted) {
+        const firstResult = results[0];
+        hasAutoSelectedRef.current = true;
+
+        // Use setTimeout to ensure the selection happens after the state updates
+        setTimeout(() => {
+          handleStockClick(firstResult);
+        }, 0);
+      }
     } else {
       setSearchResults([]);
       setShowDropdown(false);
       setCurrentPage(0);
+      hasAutoSelectedRef.current = false;
     }
-  }, [value, search]);
+  }, [value, search, disableAutoDropdown, autoSelectFirst]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -52,24 +76,39 @@ export default function ModernStockInput({ value, onChange, onStockSelect }: Mod
 
   useEffect(() => {
     const updatePosition = () => {
-      if (inputRef.current && showDropdown) {
+      if (inputRef.current) {
         const rect = inputRef.current.getBoundingClientRect();
         setDropdownPosition({
           left: rect.left,
-          top: rect.bottom + 12,
+          top: rect.bottom + 8,
           width: rect.width
         });
       }
     };
 
-    updatePosition();
-    window.addEventListener('scroll', updatePosition, true);
-    window.addEventListener('resize', updatePosition);
+    if (showDropdown) {
+      updatePosition();
+      window.addEventListener('resize', updatePosition);
 
-    return () => {
-      window.removeEventListener('scroll', updatePosition, true);
-      window.removeEventListener('resize', updatePosition);
+      return () => {
+        window.removeEventListener('resize', updatePosition);
+      };
+    }
+  }, [showDropdown]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (showDropdown) {
+        setShowDropdown(false);
+      }
     };
+
+    if (showDropdown) {
+      window.addEventListener('scroll', handleScroll, true);
+      return () => {
+        window.removeEventListener('scroll', handleScroll, true);
+      };
+    }
   }, [showDropdown]);
 
   const totalPages = Math.ceil(searchResults.length / ITEMS_PER_PAGE);
@@ -117,17 +156,20 @@ export default function ModernStockInput({ value, onChange, onStockSelect }: Mod
         />
       </div>
 
-      {showDropdown && currentResults.length > 0 && (
+      {showDropdown && currentResults.length > 0 && createPortal(
         <div
           ref={dropdownRef}
-          className="fixed z-[99999] bg-white rounded-2xl shadow-2xl overflow-hidden animate-fadeIn border border-gray-200"
+          className="fixed z-[9999] bg-white rounded-2xl overflow-hidden animate-fadeIn border border-gray-200"
           style={{
-            left: dropdownPosition.left + 'px',
-            top: dropdownPosition.top + 'px',
-            width: dropdownPosition.width + 'px'
+            left: `${dropdownPosition.left}px`,
+            top: `${dropdownPosition.top}px`,
+            width: `${dropdownPosition.width}px`,
+            maxHeight: '400px',
+            boxShadow: '0 10px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.1)',
+            pointerEvents: 'auto'
           }}
         >
-          <div className="max-h-80 overflow-y-auto">
+          <div className="max-h-80 overflow-y-auto" style={{ overflowY: 'auto' }}>
             {currentResults.map((stock, index) => (
               <button
                 key={`${stock.code}-${index}`}
@@ -174,7 +216,8 @@ export default function ModernStockInput({ value, onChange, onStockSelect }: Mod
               </button>
             </div>
           )}
-        </div>
+        </div>,
+        document.body
       )}
 
       {isLoading && (
