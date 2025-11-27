@@ -24,9 +24,7 @@ export default function EnhancedTitle() {
           AI株式診断
         </h2>
         <p className="text-base md:text-lg text-white/90 leading-relaxed">
-          最新のAI技術を活用して、株式市場のトレンドとデータを分析します。
-          <br />
-          銘柄コードを入力するだけで、即座に詳細な診断レポートを提供します。
+          銘柄コードを入力して、AIによる詳細な株式分析を受けましょう。
         </p>
       </div>
     </div>
