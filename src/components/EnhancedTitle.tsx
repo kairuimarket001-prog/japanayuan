@@ -20,9 +20,6 @@ export default function EnhancedTitle() {
       </div>
 
       <div className="text-center space-y-2 max-w-2xl">
-        <h2 className="text-xl md:text-2xl font-semibold text-white">
-          AI株式診断
-        </h2>
         <p className="text-base md:text-lg text-white/90 leading-relaxed">
           銘柄コードを入力して、AIによる詳細な株式分析を受けましょう。
         </p>

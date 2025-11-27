@@ -22,7 +22,7 @@ export default function AnimatedCatRobot() {
   }, []);
 
   return (
-    <div className="flex justify-center items-center py-2">
+    <div className="flex flex-col justify-center items-center py-2">
       <div className="relative w-40 h-40">
         <svg
           viewBox="0 0 200 200"
@@ -172,6 +172,14 @@ export default function AnimatedCatRobot() {
           )}
         </svg>
       </div>
+
+      <div
+        className="w-32 h-4 rounded-full mt-2"
+        style={{
+          backgroundColor: '#1b2962',
+          boxShadow: '0 4px 8px rgba(27, 41, 98, 0.4)'
+        }}
+      />
 
       <style>{`
         @keyframes tail-wag {
