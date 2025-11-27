@@ -63,7 +63,7 @@ export default function DiagnosisModal({
         <div className="relative bg-white rounded-2xl shadow-2xl overflow-hidden" style={{ touchAction: 'auto' }}>
           <div
             className="sticky top-0 px-6 py-4 flex items-center justify-between"
-            style={{ background: 'linear-gradient(135deg, rgba(147, 51, 234, 0.95) 0%, rgba(126, 34, 206, 0.95) 50%, rgba(107, 33, 168, 0.95) 100%)' }}
+            style={{ background: 'linear-gradient(135deg, #0a0e1a 0%, #0d1321 100%)' }}
           >
           <div className="flex-1 text-center">
             <h2 className="text-sm font-bold text-white">
@@ -115,20 +115,11 @@ export default function DiagnosisModal({
 
             <button
               onClick={onLineConversion}
-              className="relative w-full font-bold py-4 px-6 rounded-2xl transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3 text-sm mt-6 hover:scale-105 overflow-hidden"
-              style={{ background: 'linear-gradient(135deg, rgba(147, 51, 234, 0.95) 0%, rgba(126, 34, 206, 0.95) 50%, rgba(107, 33, 168, 0.95) 100%)', color: 'white' }}
+              className="w-full font-bold py-4 px-6 rounded-2xl transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3 text-sm mt-6 hover:opacity-90"
+              style={{ backgroundColor: '#ffff1e', color: '#1f2937' }}
             >
-              <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute w-2 h-2 bg-white/40 rounded-full animate-float-1" style={{ top: '20%', left: '15%', animationDelay: '0s' }} />
-                <div className="absolute w-1.5 h-1.5 bg-white/30 rounded-full animate-float-2" style={{ top: '60%', left: '25%', animationDelay: '1s' }} />
-                <div className="absolute w-2 h-2 bg-white/40 rounded-full animate-float-3" style={{ top: '40%', left: '70%', animationDelay: '1.5s' }} />
-                <div className="absolute w-1 h-1 bg-white/50 rounded-full animate-float-1" style={{ top: '70%', left: '80%', animationDelay: '0.5s' }} />
-                <div className="absolute w-1.5 h-1.5 bg-white/30 rounded-full animate-float-2" style={{ top: '30%', left: '50%', animationDelay: '2s' }} />
-                <div className="absolute w-2 h-2 bg-white/40 rounded-full animate-float-3" style={{ top: '80%', left: '40%', animationDelay: '1.2s' }} />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent animate-shine" />
-              <ExternalLink className="w-6 h-6 flex-shrink-0 relative z-10" />
-              <span className="relative z-10">LINEで定期AIレポートを受け取る</span>
+              <ExternalLink className="w-6 h-6 flex-shrink-0" />
+              <span>LINEで定期AIレポートを受け取る</span>
             </button>
 
             <div className="mt-3 p-4 rounded-xl" style={{ backgroundColor: '#f3f4f6' }}>
