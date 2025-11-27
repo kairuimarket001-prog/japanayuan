@@ -467,7 +467,7 @@ export default function RefactoredHome() {
               <SimpleAILogo />
             </div>
 
-            <div className="flex-[4] flex flex-col justify-center pb-16">
+            <div className="flex-[4] flex flex-col justify-end">
               <FormContainer>
                 <ModernStockInput
                   value={inputValue}

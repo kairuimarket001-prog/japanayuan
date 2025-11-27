@@ -44,7 +44,7 @@ export default function SimpleAILogo() {
   return (
     <div className="flex flex-col items-center justify-center w-full h-full gap-4 relative overflow-hidden">
       <h1
-        className="text-4xl font-bold text-white select-none animate-title-glow relative z-20"
+        className="text-4xl font-bold bg-gradient-to-r from-white via-purple-100 to-white bg-clip-text text-transparent select-none animate-title-glow relative z-20"
         style={{
           fontFamily: "'Hiragino Sans', 'Noto Sans JP', sans-serif",
           letterSpacing: '0.05em'
