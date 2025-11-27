@@ -459,7 +459,7 @@ export default function RefactoredHome() {
 
       <div className="relative z-10 flex-1 flex flex-col overflow-visible">
         {!showLoadingScene ? (
-          <div className="flex-1 flex flex-col justify-center py-12 space-y-8">
+          <div className="flex-1 flex flex-col justify-center py-6 space-y-4">
             <AnimatedCatRobot />
 
             <EnhancedTitle />

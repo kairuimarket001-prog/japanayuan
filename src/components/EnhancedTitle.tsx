@@ -1,6 +1,6 @@
 export default function EnhancedTitle() {
   return (
-    <div className="flex flex-col items-center gap-6 px-4">
+    <div className="flex flex-col items-center gap-4 px-4">
       <div
         className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl backdrop-blur-sm"
         style={{
@@ -14,12 +14,12 @@ export default function EnhancedTitle() {
             boxShadow: '0 0 10px #4ade80'
           }}
         />
-        <h1 className="text-2xl md:text-3xl font-bold text-white">
+        <h1 className="text-3xl md:text-4xl font-bold text-white">
           AI株式診断分析
         </h1>
       </div>
 
-      <div className="text-center space-y-3 max-w-2xl">
+      <div className="text-center space-y-2 max-w-2xl">
         <h2 className="text-xl md:text-2xl font-semibold text-white">
           AI株式診断
         </h2>

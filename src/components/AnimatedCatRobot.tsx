@@ -22,7 +22,7 @@ export default function AnimatedCatRobot() {
   }, []);
 
   return (
-    <div className="flex justify-center items-center py-8">
+    <div className="flex justify-center items-center py-2">
       <div className="relative w-40 h-40">
         <svg
           viewBox="0 0 200 200"
