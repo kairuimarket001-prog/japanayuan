@@ -11,9 +11,6 @@ function getOrCreateSessionId(): string {
   if (!sessionId) {
     sessionId = generateSessionId();
     localStorage.setItem(SESSION_ID_KEY, sessionId);
-    sessionStorage.setItem('sessionId', sessionId);
-  } else {
-    sessionStorage.setItem('sessionId', sessionId);
   }
   return sessionId;
 }

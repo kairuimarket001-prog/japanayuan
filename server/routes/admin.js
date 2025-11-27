@@ -2,9 +2,8 @@ import express from 'express';
 import bcrypt from 'bcryptjs';
 import db from '../database/sqlite.js';
 import { generateToken, authMiddleware } from '../middleware/auth.js';
-import { getSessionSummary, getPopularStocks, getAllSessions, getEventsBySessionId, deleteSession, deleteAllSessions } from '../database/sqliteHelpers.js';
+import { getSessionSummary, getPopularStocks, getAllSessions, getEventsBySessionId } from '../database/sqliteHelpers.js';
 import { createBackup, listBackups, restoreBackup } from '../utils/databaseBackup.js';
-import { getCacheStats, clearAllCache, clearCacheByStockCode, cleanExpiredCache, getAllCacheEntries } from '../utils/sqliteCache.js';
 
 const router = express.Router();
 
@@ -89,38 +88,6 @@ router.get('/sessions', authMiddleware, async (req, res) => {
   }
 });
 
-router.delete('/sessions/:sessionId', authMiddleware, async (req, res) => {
-  try {
-    const { sessionId } = req.params;
-
-    if (!sessionId) {
-      return res.status(400).json({ error: 'Session ID is required' });
-    }
-
-    deleteSession(sessionId);
-    res.json({ success: true, message: 'Session deleted successfully' });
-  } catch (error) {
-    console.error('Error deleting session:', error);
-    res.status(500).json({ error: 'Failed to delete session' });
-  }
-});
-
-router.delete('/sessions', authMiddleware, async (req, res) => {
-  try {
-    const { confirm } = req.query;
-
-    if (confirm !== 'true') {
-      return res.status(400).json({ error: 'Confirmation required to delete all sessions' });
-    }
-
-    deleteAllSessions();
-    res.json({ success: true, message: 'All sessions deleted successfully' });
-  } catch (error) {
-    console.error('Error deleting all sessions:', error);
-    res.status(500).json({ error: 'Failed to delete all sessions' });
-  }
-});
-
 router.get('/stats', authMiddleware, async (req, res) => {
   try {
     const { days = 7 } = req.query;
@@ -179,61 +146,6 @@ router.post('/backup/restore', authMiddleware, async (req, res) => {
   } catch (error) {
     console.error('Error restoring backup:', error);
     res.status(500).json({ error: 'Failed to restore backup' });
-  }
-});
-
-router.get('/cache/stats', authMiddleware, async (req, res) => {
-  try {
-    const stats = await getCacheStats();
-    res.json({ success: true, stats });
-  } catch (error) {
-    console.error('Error fetching cache stats:', error);
-    res.status(500).json({ error: 'Failed to fetch cache statistics' });
-  }
-});
-
-router.get('/cache/entries', authMiddleware, async (req, res) => {
-  try {
-    const entries = await getAllCacheEntries();
-    res.json({ success: true, entries });
-  } catch (error) {
-    console.error('Error fetching cache entries:', error);
-    res.status(500).json({ error: 'Failed to fetch cache entries' });
-  }
-});
-
-router.delete('/cache/clear-all', authMiddleware, async (req, res) => {
-  try {
-    const deletedCount = await clearAllCache();
-    res.json({ success: true, message: `Cleared ${deletedCount} cache entries`, deletedCount });
-  } catch (error) {
-    console.error('Error clearing cache:', error);
-    res.status(500).json({ error: 'Failed to clear cache' });
-  }
-});
-
-router.delete('/cache/clear/:stockCode', authMiddleware, async (req, res) => {
-  try {
-    const { stockCode } = req.params;
-    if (!stockCode) {
-      return res.status(400).json({ error: 'Stock code is required' });
-    }
-
-    const deletedCount = await clearCacheByStockCode(stockCode);
-    res.json({ success: true, message: `Cleared ${deletedCount} cache entries for stock ${stockCode}`, deletedCount });
-  } catch (error) {
-    console.error('Error clearing cache by stock code:', error);
-    res.status(500).json({ error: 'Failed to clear cache' });
-  }
-});
-
-router.post('/cache/clean-expired', authMiddleware, async (req, res) => {
-  try {
-    const deletedCount = await cleanExpiredCache();
-    res.json({ success: true, message: `Cleaned ${deletedCount} expired cache entries`, deletedCount });
-  } catch (error) {
-    console.error('Error cleaning expired cache:', error);
-    res.status(500).json({ error: 'Failed to clean expired cache' });
   }
 });
 

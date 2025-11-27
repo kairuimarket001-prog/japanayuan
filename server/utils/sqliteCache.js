@@ -32,7 +32,7 @@ export async function getCachedDiagnosis(stockCode) {
 export async function saveDiagnosisToCache(stockCode, stockData, diagnosisResult, modelUsed = 'qwen2.5-7b-instruct') {
   const id = randomUUID();
   const now = new Date();
-  const expiresAt = new Date(now.getTime() + 6 * 60 * 60 * 1000);
+  const expiresAt = new Date(now.getTime() + 24 * 60 * 60 * 1000);
 
   db.prepare(`
     INSERT INTO diagnosis_cache (
@@ -82,41 +82,4 @@ export async function getCacheStats() {
     activeEntries: totalEntries - expiredEntries,
     totalHits
   };
-}
-
-export async function clearAllCache() {
-  const result = db.prepare(`
-    DELETE FROM diagnosis_cache
-  `).run();
-
-  console.log(`🗑️  Cleared all ${result.changes} cache entries`);
-  return result.changes;
-}
-
-export async function clearCacheByStockCode(stockCode) {
-  const result = db.prepare(`
-    DELETE FROM diagnosis_cache WHERE stock_code = ?
-  `).run(stockCode);
-
-  console.log(`🗑️  Cleared ${result.changes} cache entries for stock ${stockCode}`);
-  return result.changes;
-}
-
-export async function getAllCacheEntries() {
-  const now = new Date().toISOString();
-
-  const entries = db.prepare(`
-    SELECT
-      stock_code,
-      created_at,
-      expires_at,
-      hit_count,
-      last_hit_at,
-      model_used,
-      CASE WHEN expires_at > ? THEN 1 ELSE 0 END as is_active
-    FROM diagnosis_cache
-    ORDER BY created_at DESC
-  `).all(now);
-
-  return entries;
 }
