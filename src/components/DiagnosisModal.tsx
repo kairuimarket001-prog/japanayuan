@@ -27,13 +27,26 @@ export default function DiagnosisModal({
   isConnecting = false,
 }: DiagnosisModalProps) {
   const contentRef = useRef<HTMLDivElement>(null);
+  const lastLengthRef = useRef(0);
+  const wasStreamingRef = useRef(false);
 
-  // Reset scroll position to top when modal opens
   useEffect(() => {
-    if (isOpen && contentRef.current) {
-      contentRef.current.scrollTop = 0;
+    if (isStreaming && contentRef.current && analysis.length > lastLengthRef.current) {
+      contentRef.current.scrollTop = contentRef.current.scrollHeight;
+      lastLengthRef.current = analysis.length;
     }
-  }, [isOpen]);
+  }, [analysis, isStreaming]);
+
+  useEffect(() => {
+    if (wasStreamingRef.current && !isStreaming && contentRef.current && analysis.length > 0) {
+      setTimeout(() => {
+        if (contentRef.current) {
+          contentRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }, 300);
+    }
+    wasStreamingRef.current = isStreaming;
+  }, [isStreaming, analysis.length]);
 
   useEffect(() => {
     if (isOpen) {
