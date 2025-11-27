@@ -501,7 +501,6 @@ export default function RefactoredHome() {
                   value={inputValue}
                   onChange={setInputValue}
                   onStockSelect={handleStockSelect}
-                  autoSelectFirst={isUrlAutoSelectRef.current}
                 />
 
                 {loading && (
