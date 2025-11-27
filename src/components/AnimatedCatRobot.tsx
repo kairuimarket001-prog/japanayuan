@@ -177,7 +177,7 @@ export default function AnimatedCatRobot() {
         width="140"
         height="24"
         viewBox="0 0 140 24"
-        className="-mt-2"
+        className="-mt-4"
         style={{ filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))' }}
       >
         <ellipse
