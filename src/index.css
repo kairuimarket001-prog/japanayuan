@@ -247,6 +247,39 @@
     }
   }
 
+  @keyframes float-1 {
+    0%, 100% {
+      transform: translateY(0px);
+      opacity: 0.4;
+    }
+    50% {
+      transform: translateY(-15px);
+      opacity: 0.7;
+    }
+  }
+
+  @keyframes float-2 {
+    0%, 100% {
+      transform: translateY(0px);
+      opacity: 0.3;
+    }
+    50% {
+      transform: translateY(-20px);
+      opacity: 0.6;
+    }
+  }
+
+  @keyframes float-3 {
+    0%, 100% {
+      transform: translateY(0px);
+      opacity: 0.4;
+    }
+    50% {
+      transform: translateY(-18px);
+      opacity: 0.8;
+    }
+  }
+
   .animate-twinkle {
     animation: twinkle 3s ease-in-out infinite;
   }
@@ -265,6 +298,18 @@
 
   .animate-float-slow-reverse {
     animation: float-slow-reverse 25s ease-in-out infinite;
+  }
+
+  .animate-float-1 {
+    animation: float-1 3s ease-in-out infinite;
+  }
+
+  .animate-float-2 {
+    animation: float-2 4s ease-in-out infinite;
+  }
+
+  .animate-float-3 {
+    animation: float-3 3.5s ease-in-out infinite;
   }
 
   @keyframes shine {
@@ -445,4 +490,114 @@
   .animate-title-glow {
     animation: title-glow 3s ease-in-out infinite;
   }
+
+  @keyframes ripple-ring {
+    0% {
+      transform: translate(-50%, -50%) scale(0.8);
+      opacity: 0.6;
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.3;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(0.8);
+      opacity: 0.6;
+    }
+  }
+
+  .animate-ripple-ring {
+    animation: ripple-ring 4s ease-in-out infinite;
+  }
+
+  @keyframes wave-1 {
+    0%, 100% { transform: scaleY(0.5); opacity: 0.3; }
+    50% { transform: scaleY(1.8); opacity: 0.6; }
+  }
+
+  @keyframes wave-2 {
+    0%, 100% { transform: scaleY(0.6); opacity: 0.35; }
+    50% { transform: scaleY(2.2); opacity: 0.65; }
+  }
+
+  @keyframes wave-3 {
+    0%, 100% { transform: scaleY(0.4); opacity: 0.3; }
+    50% { transform: scaleY(1.5); opacity: 0.5; }
+  }
+
+  @keyframes wave-4 {
+    0%, 100% { transform: scaleY(0.7); opacity: 0.4; }
+    50% { transform: scaleY(2.5); opacity: 0.7; }
+  }
+
+  @keyframes wave-5 {
+    0%, 100% { transform: scaleY(0.55); opacity: 0.35; }
+    50% { transform: scaleY(2.0); opacity: 0.6; }
+  }
+
+  @keyframes wave-6 {
+    0%, 100% { transform: scaleY(0.5); opacity: 0.3; }
+    50% { transform: scaleY(1.7); opacity: 0.55; }
+  }
+
+  @keyframes wave-7 {
+    0%, 100% { transform: scaleY(0.8); opacity: 0.45; }
+    50% { transform: scaleY(2.8); opacity: 0.75; }
+  }
+
+  @keyframes wave-8 {
+    0%, 100% { transform: scaleY(0.6); opacity: 0.35; }
+    50% { transform: scaleY(2.1); opacity: 0.6; }
+  }
+
+  @keyframes wave-9 {
+    0%, 100% { transform: scaleY(0.5); opacity: 0.3; }
+    50% { transform: scaleY(1.6); opacity: 0.55; }
+  }
+
+  @keyframes wave-10 {
+    0%, 100% { transform: scaleY(0.65); opacity: 0.4; }
+    50% { transform: scaleY(2.3); opacity: 0.65; }
+  }
+
+  @keyframes wave-11 {
+    0%, 100% { transform: scaleY(0.45); opacity: 0.3; }
+    50% { transform: scaleY(1.4); opacity: 0.5; }
+  }
+
+  @keyframes wave-12 {
+    0%, 100% { transform: scaleY(0.7); opacity: 0.4; }
+    50% { transform: scaleY(2.4); opacity: 0.7; }
+  }
+
+  @keyframes wave-13 {
+    0%, 100% { transform: scaleY(0.55); opacity: 0.35; }
+    50% { transform: scaleY(1.9); opacity: 0.6; }
+  }
+
+  @keyframes wave-14 {
+    0%, 100% { transform: scaleY(0.75); opacity: 0.45; }
+    50% { transform: scaleY(2.6); opacity: 0.7; }
+  }
+
+  @keyframes wave-15 {
+    0%, 100% { transform: scaleY(0.5); opacity: 0.35; }
+    50% { transform: scaleY(1.8); opacity: 0.55; }
+  }
+
+  .animate-wave-1 { animation: wave-1 2.8s ease-in-out infinite; }
+  .animate-wave-2 { animation: wave-2 3.2s ease-in-out infinite; animation-delay: 0.2s; }
+  .animate-wave-3 { animation: wave-3 2.5s ease-in-out infinite; animation-delay: 0.4s; }
+  .animate-wave-4 { animation: wave-4 3.5s ease-in-out infinite; animation-delay: 0.1s; }
+  .animate-wave-5 { animation: wave-5 3.0s ease-in-out infinite; animation-delay: 0.6s; }
+  .animate-wave-6 { animation: wave-6 2.7s ease-in-out infinite; animation-delay: 0.3s; }
+  .animate-wave-7 { animation: wave-7 3.8s ease-in-out infinite; animation-delay: 0.5s; }
+  .animate-wave-8 { animation: wave-8 3.1s ease-in-out infinite; animation-delay: 0.15s; }
+  .animate-wave-9 { animation: wave-9 2.6s ease-in-out infinite; animation-delay: 0.45s; }
+  .animate-wave-10 { animation: wave-10 3.3s ease-in-out infinite; animation-delay: 0.25s; }
+  .animate-wave-11 { animation: wave-11 2.4s ease-in-out infinite; animation-delay: 0.35s; }
+  .animate-wave-12 { animation: wave-12 3.6s ease-in-out infinite; animation-delay: 0.55s; }
+  .animate-wave-13 { animation: wave-13 2.9s ease-in-out infinite; animation-delay: 0.2s; }
+  .animate-wave-14 { animation: wave-14 3.4s ease-in-out infinite; animation-delay: 0.5s; }
+  .animate-wave-15 { animation: wave-15 2.8s ease-in-out infinite; animation-delay: 0.4s; }
 }
