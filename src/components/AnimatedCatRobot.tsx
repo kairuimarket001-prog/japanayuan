@@ -173,13 +173,37 @@ export default function AnimatedCatRobot() {
         </svg>
       </div>
 
-      <div
-        className="w-32 h-4 rounded-full mt-2"
-        style={{
-          backgroundColor: '#1b2962',
-          boxShadow: '0 4px 8px rgba(27, 41, 98, 0.4)'
-        }}
-      />
+      <svg
+        width="140"
+        height="24"
+        viewBox="0 0 140 24"
+        className="-mt-2"
+        style={{ filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))' }}
+      >
+        <ellipse
+          cx="70"
+          cy="12"
+          rx="70"
+          ry="12"
+          fill="#1b2962"
+        />
+        <ellipse
+          cx="70"
+          cy="8"
+          rx="60"
+          ry="8"
+          fill="#2a3d7a"
+          opacity="0.6"
+        />
+        <ellipse
+          cx="70"
+          cy="5"
+          rx="45"
+          ry="5"
+          fill="#3a4d8a"
+          opacity="0.4"
+        />
+      </svg>
 
       <style>{`
         @keyframes tail-wag {
