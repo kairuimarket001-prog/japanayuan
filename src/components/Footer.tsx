@@ -138,7 +138,7 @@ export default function Footer() {
                 </li>
                 <li className="flex items-center gap-1 text-white drop-shadow-lg">
                   <Mail className="w-3 h-3" />
-                  <span>support@valuepal.jp</span>
+                  <span>wusegut647@gmail.com</span>
                 </li>
                 <li className="text-white/80 drop-shadow-lg text-xs">
                   お問い合わせは24時間受付（回答は営業時間内）
@@ -149,9 +149,13 @@ export default function Footer() {
 
           {/* Copyright Section */}
           <div className="border-t border-white/30 pt-4 text-center">
-            <p className="text-xs sm:text-sm text-white drop-shadow-lg mb-2 font-medium">
-              &copy; {currentYear} ziustock.com. All rights reserved.
-            </p>
+            <div className="text-xs sm:text-sm text-white drop-shadow-lg mb-2 font-medium space-y-1">
+              <p>株式会社イービット / ebit, Inc.</p>
+              <p>〒150-0043 東京都渋谷区道玄坂2-10-12 新大宗ビル3号館</p>
+              <p>Dogenzaka 2-10-12, Shibuya-ku, Tokyo</p>
+              <p>TEL: 03-5456-7890 / Email: wusegut647@gmail.com</p>
+              <p className="mt-2">&copy; {currentYear} ziustock.com. All rights reserved.</p>
+            </div>
             <p className="text-[10px] sm:text-xs text-white/90 drop-shadow-lg leading-relaxed max-w-3xl mx-auto">
               当サイトで提供される情報は投資勧誘を目的としたものではありません。
               投資に関する最終決定は、利用者ご自身の判断でなさるようお願いいたします。
