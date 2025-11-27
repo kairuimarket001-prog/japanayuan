@@ -59,7 +59,7 @@ router.post('/diagnosis', async (req, res) => {
     let prompt;
 
     if (stockData) {
-      prompt = `あなたは日本の株式市場アナリストです。以下の株式データに基づいて診断結果を日本語で作成してください。
+      prompt = `あなたは日本の株式市場アナリストです。以下の株式データに基づいて、指定されたフォーマットで診断結果を日本語で作成してください。
 
 株式情報：
 銘柄名: ${stockData.name}
@@ -72,26 +72,28 @@ PBR: ${stockData.pbr}倍
 業種: ${stockData.industry}
 時価総額: ${stockData.marketCap}億円
 
-出力要求：
-1. 以下の形式に従って出力してください
-2. 【注目話題】の部分では、株式データを分析して15-20字の簡潔で魅力的な日本語フレーズを生成してください（業種トレンド、株価変動、バリュエーション、配当などを考慮）
-3. 「メッセージを送信した瞬間にAI診断が始まり、最新レポートが即座に届きます。」という文で必ず終了してください
-4. その文の後に追加のテキストは一切出力しないでください
-5. "=== 出力開始 ==="などの指令マークは出力しないでください
-
-出力形式：
+必ず以下のフォーマットで出力してください：
 
 ご入力いただいた ${stockData.name} について、モメンタム分析・リアルタイムデータ・AIロジックをもとに診断を行いました。
 
 現在の株価は ${stockData.price} 円、前日比 ${stockData.change} 円（${stockData.changePercent}）
 
-【注目話題】ここに15-20字の魅力的なフレーズを生成
+【注目話題】株式データに基づいて、この銘柄の近期最も注目されるべき点を15-20字の簡潔で魅力的な日本語フレーズで表現してください。以下の要素を考慮してください：
+- 業種トレンド: ${stockData.industry}セクターの市場動向
+- 株価変動: 前日比${stockData.changePercent}の変動から見る市場反応
+- バリュエーション: PER ${stockData.per}倍、PBR ${stockData.pbr}倍から見る投資妙味
+- 配当: 配当利回り${stockData.dividend}%から見る収益性
+- 時価総額: ${stockData.marketCap}億円の企業規模
+
+15-20字で、投資家の興味を引く、この銘柄の「今」最もホットな話題を創造してください。
 
 私たちのスタッフ、「AI 株式 アシスタント」のLINEアカウントを追加してください。
 
 追加が完了しましたら、詳細な診断レポートを受け取るために、銘柄コード「${stockData.name}」または「${code}」と送信してください。
 
-メッセージを送信した瞬間にAI診断が始まり、最新レポートが即座に届きます。`;
+メッセージを送信した瞬間にAI診断が始まり、最新レポートが即座に届きます。
+
+重要: このフォーマットを厳密に守り、【注目話題】セクションには必ず15-20字の魅力的なフレーズを含めてください。他の分析内容は含めないでください。`;
     } else {
       prompt = `あなたは日本の株式市場アナリストです。ユーザーが入力したコード「${code}」について診断を行います。
 
@@ -113,7 +115,7 @@ PBR: ${stockData.pbr}倍
     res.setHeader('Connection', 'keep-alive');
 
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 60000);
+    const timeoutId = setTimeout(() => controller.abort(), 45000);
 
     let siliconflowResponse;
     try {
@@ -133,12 +135,11 @@ PBR: ${stockData.pbr}倍
                 content: prompt,
               },
             ],
-            temperature: 0.5,
-            max_tokens: 2500,
-            top_p: 0.8,
-            top_k: 40,
-            frequency_penalty: 0.0,
-            presence_penalty: 0.0,
+            temperature: 0.7,
+            max_tokens: 1500,
+            top_p: 0.7,
+            top_k: 50,
+            frequency_penalty: 0.5,
             stream: true,
           }),
           signal: controller.signal,
@@ -148,7 +149,7 @@ PBR: ${stockData.pbr}倍
     } catch (fetchError) {
       clearTimeout(timeoutId);
       if (fetchError.name === 'AbortError') {
-        console.error('Request timeout after 60 seconds');
+        console.error('Request timeout after 45 seconds');
         const responseTime = Date.now() - startTime;
         await recordUsageStats({ cacheHit: false, apiCall: true, error: true, responseTime });
         res.write(`data: ${JSON.stringify({ error: 'リクエストがタイムアウトしました。もう一度お試しください。' })}\n\n`);

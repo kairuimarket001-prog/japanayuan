@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import { createPortal } from 'react-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useStockSearch, SearchResult } from '../hooks/useStockSearch';
 
@@ -76,39 +75,24 @@ export default function ModernStockInput({ value, onChange, onStockSelect, disab
 
   useEffect(() => {
     const updatePosition = () => {
-      if (inputRef.current) {
+      if (inputRef.current && showDropdown) {
         const rect = inputRef.current.getBoundingClientRect();
         setDropdownPosition({
           left: rect.left,
-          top: rect.bottom + 8,
+          top: rect.bottom + 12,
           width: rect.width
         });
       }
     };
 
-    if (showDropdown) {
-      updatePosition();
-      window.addEventListener('resize', updatePosition);
+    updatePosition();
+    window.addEventListener('scroll', updatePosition, true);
+    window.addEventListener('resize', updatePosition);
 
-      return () => {
-        window.removeEventListener('resize', updatePosition);
-      };
-    }
-  }, [showDropdown]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (showDropdown) {
-        setShowDropdown(false);
-      }
+    return () => {
+      window.removeEventListener('scroll', updatePosition, true);
+      window.removeEventListener('resize', updatePosition);
     };
-
-    if (showDropdown) {
-      window.addEventListener('scroll', handleScroll, true);
-      return () => {
-        window.removeEventListener('scroll', handleScroll, true);
-      };
-    }
   }, [showDropdown]);
 
   const totalPages = Math.ceil(searchResults.length / ITEMS_PER_PAGE);
@@ -156,20 +140,17 @@ export default function ModernStockInput({ value, onChange, onStockSelect, disab
         />
       </div>
 
-      {showDropdown && currentResults.length > 0 && createPortal(
+      {showDropdown && currentResults.length > 0 && (
         <div
           ref={dropdownRef}
-          className="fixed z-[9999] bg-white rounded-2xl overflow-hidden animate-fadeIn border border-gray-200"
+          className="fixed z-[99999] bg-white rounded-2xl shadow-2xl overflow-hidden animate-fadeIn border border-gray-200"
           style={{
-            left: `${dropdownPosition.left}px`,
-            top: `${dropdownPosition.top}px`,
-            width: `${dropdownPosition.width}px`,
-            maxHeight: '400px',
-            boxShadow: '0 10px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.1)',
-            pointerEvents: 'auto'
+            left: dropdownPosition.left + 'px',
+            top: dropdownPosition.top + 'px',
+            width: dropdownPosition.width + 'px'
           }}
         >
-          <div className="max-h-80 overflow-y-auto" style={{ overflowY: 'auto' }}>
+          <div className="max-h-80 overflow-y-auto">
             {currentResults.map((stock, index) => (
               <button
                 key={`${stock.code}-${index}`}
@@ -216,8 +197,7 @@ export default function ModernStockInput({ value, onChange, onStockSelect, disab
               </button>
             </div>
           )}
-        </div>,
-        document.body
+        </div>
       )}
 
       {isLoading && (
